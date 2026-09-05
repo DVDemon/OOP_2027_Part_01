@@ -98,7 +98,7 @@ int main() {
 
 ## 3. Логические операторы и операторы сравнения
 
-> **Пример на GitHub:** [14_LogicalOperators](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/14_LogicalOperators)
+> **Пример:** [03_logical_comparison](03_logical_comparison)
 
 ```cpp
 #include <iostream>
@@ -162,7 +162,7 @@ int main() {
 
 ### Префиксный и постфиксный инкремент
 
-> **Пример на GitHub:** [12_PrefixPostfixIncrementDecrement](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/12_PrefixPostfixIncrementDecrement)
+> **Пример:** [04_precedence_increment](04_precedence_increment)
 
 ```cpp
 #include <iostream>
@@ -197,7 +197,7 @@ int main() {
 
 ### Составные операторы
 
-> **Пример на GitHub:** [13_CompoundAssignmentOperators](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/13_CompoundAssignmentOperators)
+> **Пример:** [05_compound_numeric_limits](05_compound_numeric_limits)
 
 ```cpp
 int x = 10;
@@ -213,7 +213,7 @@ x &= 0b11; // x = x & 0b11; → 0
 
 ### `std::numeric_limits`
 
-> **Пример на GitHub:** [15_NumericLimits](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/15_NumericLimits)
+> **Пример:** [05_compound_numeric_limits](05_compound_numeric_limits)
 
 ```cpp
 #include <iostream>
@@ -249,7 +249,7 @@ int main() {
 
 ## 6. Математические функции `<cmath>`
 
-> **Пример на GitHub:** [16_MathFunctions](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/16_MathFunctions)
+> **Пример:** [06_cmath](06_cmath)
 
 ```cpp
 #include <iostream>
@@ -290,7 +290,7 @@ int main() {
 
 ### `std::cout` и форматирование
 
-> **Пример на GitHub:** [04_OutputFormatting](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/04_OutputFormatting)
+> **Пример:** [07_stream_io](07_stream_io)
 
 ```cpp
 #include <iostream>
@@ -376,7 +376,7 @@ int main() {
 
 ### `if` и `else`
 
-> **Пример на GitHub:** [21_IfStatements](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/21_IfStatements)
+> **Пример:** [08_conditionals](08_conditionals)
 
 ```cpp
 int score = 85;
@@ -411,7 +411,7 @@ if (auto it = grades.find("Иванов"); it != grades.end()) {
 
 ### `switch`
 
-> **Пример на GitHub:** [22_Switch](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/22_Switch)
+> **Пример:** [08_conditionals](08_conditionals)
 
 ```cpp
 enum class Color { Red, Green, Blue };
@@ -454,7 +454,7 @@ switch (int val = compute(); val) {
 
 ### Цикл `for`
 
-> **Пример на GitHub:** [23_ForLoop](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/23_ForLoop)
+> **Пример:** [09_loops](09_loops)
 
 ```cpp
 // Классический for
@@ -471,7 +471,7 @@ for (int i = 0, j = 10; i < j; ++i, --j) {
 
 ### Range-based `for` (C++11)
 
-> **Пример на GitHub:** [26_RangeBasedForLoop](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/26_RangeBasedForLoop)
+> **Пример:** [09_loops](09_loops)
 
 ```cpp
 #include <vector>
@@ -502,7 +502,7 @@ for (int x : {1, 2, 3, 4, 5}) {
 
 ### Циклы `while` и `do-while`
 
-> **Примеры на GitHub:** [27_WhileLoop](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/27_WhileLoop), [28_DoWhileLoop](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/28_DoWhileLoop)
+> **Пример:** [09_loops](09_loops)
 
 ```cpp
 // while — проверка перед итерацией
@@ -522,7 +522,7 @@ do {
 
 ### Вложенные циклы
 
-> **Пример на GitHub:** [29_NestedLoops](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/29_NestedLoops)
+> **Пример:** [09_loops](09_loops)
 
 ```cpp
 // Таблица умножения
@@ -547,7 +547,7 @@ for (int i = 1; i <= 9; ++i) {
 
 ### `break` и `continue`
 
-> **Пример на GitHub:** [30_BreakAndContinue](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/30_BreakAndContinue)
+> **Пример:** [10_break_continue_comma](10_break_continue_comma)
 
 ```cpp
 // break — выход из цикла
@@ -589,7 +589,7 @@ for (int i = 0, j = 10; i < j; ++i, --j) {
 
 ## 11. Неявные и явные преобразования типов
 
-> **Примеры на GitHub:** [19_ImplicitDataConversions](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/19_ImplicitDataConversions), [20_ExplicitDataConversions](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/20_ExplicitDataConversions)
+> **Пример:** [11_type_conversions](11_type_conversions)
 
 ### Неявные преобразования
 
@@ -737,19 +737,14 @@ std::getline(std::cin, line);  // прочитает пустую строку!
 
 | Тема | Пример |
 |------|--------|
-| Форматирование вывода | [04_OutputFormatting](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/04_OutputFormatting) |
-| Инкремент/декремент | [12_PrefixPostfixIncrementDecrement](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/12_PrefixPostfixIncrementDecrement) |
-| Составные операторы | [13_CompoundAssignmentOperators](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/13_CompoundAssignmentOperators) |
-| Логические операторы | [14_LogicalOperators](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/14_LogicalOperators) |
-| numeric_limits | [15_NumericLimits](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/15_NumericLimits) |
-| Математические функции | [16_MathFunctions](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/16_MathFunctions) |
-| Неявные преобразования | [19_ImplicitDataConversions](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/19_ImplicitDataConversions) |
-| Явные преобразования | [20_ExplicitDataConversions](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/20_ExplicitDataConversions) |
-| if | [21_IfStatements](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/21_IfStatements) |
-| switch | [22_Switch](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/22_Switch) |
-| for | [23_ForLoop](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/23_ForLoop) |
-| Range-based for | [26_RangeBasedForLoop](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/26_RangeBasedForLoop) |
-| while | [27_WhileLoop](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/27_WhileLoop) |
-| do-while | [28_DoWhileLoop](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/28_DoWhileLoop) |
-| Вложенные циклы | [29_NestedLoops](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/29_NestedLoops) |
-| break/continue | [30_BreakAndContinue](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/30_BreakAndContinue) |
+| Арифметические операторы | [01_arithmetic](01_arithmetic) |
+| Побитовые операторы | [02_bitwise](02_bitwise) |
+| Логические операторы и операторы сравнения | [03_logical_comparison](03_logical_comparison) |
+| Приоритет, ассоциативность, инкремент/декремент | [04_precedence_increment](04_precedence_increment) |
+| Составные операторы присваивания. `std::numeric_limits` | [05_compound_numeric_limits](05_compound_numeric_limits) |
+| Математические функции `<cmath>` | [06_cmath](06_cmath) |
+| Потоковый ввод-вывод: `std::cin`, `std::cout`, манипуляторы | [07_stream_io](07_stream_io) |
+| Условные конструкции: `if`, init-`if`, `switch` | [08_conditionals](08_conditionals) |
+| Циклы: `for`, range-based `for`, `while`, `do-while` | [09_loops](09_loops) |
+| `break`, `continue`, оператор «запятая» | [10_break_continue_comma](10_break_continue_comma) |
+| Неявные и явные преобразования типов | [11_type_conversions](11_type_conversions) |

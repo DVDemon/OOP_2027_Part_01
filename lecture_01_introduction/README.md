@@ -40,12 +40,12 @@ cd build && ctest --output-on-failure
 |-------|-------------|-------|
 | [`01_first_program`](01_first_program) | 3 | Структура программы, точка входа `main`, `argc`/`argv` |
 | [`02_translation_units`](02_translation_units) | 4, 5 | Этапы трансляции, единицы трансляции, ODR, include guard |
-| [`03_gtest_calculator`](03_gtest_calculator) | 6, 7 | CMake + Google Test: проект «Калькулятор» с тестами |
-| [`04_basic_types`](04_basic_types) | 8 | Базовые типы, литералы, `sizeof`, типы фиксированного размера |
-| [`05_initialization`](05_initialization) | 9 | Copy/direct/list/value-инициализация, сужение, most vexing parse |
-| [`06_const_constexpr`](06_const_constexpr) | 10 | `const` vs `constexpr`, `static_assert`, макросы — это плохо |
-| [`07_auto`](07_auto) | 10 | Вывод типа `auto`: где помогает, где вредит |
-| [`08_namespaces`](08_namespaces) | 10 | Пространства имён, `using`-объявление vs `using`-директива |
+| [`03_gtest_calculator`](03_gtest_calculator) | 7, 8 | CMake + Google Test: проект «Калькулятор» с тестами |
+| [`04_basic_types`](04_basic_types) | 10 | Базовые типы, литералы, `sizeof`, типы фиксированного размера |
+| [`05_initialization`](05_initialization) | 11 | Copy/direct/list/value-инициализация, сужение, most vexing parse |
+| [`06_const_constexpr`](06_const_constexpr) | 12 | `const` vs `constexpr`, `static_assert`, макросы — это плохо |
+| [`07_auto`](07_auto) | 12 | Вывод типа `auto`: где помогает, где вредит |
+| [`08_namespaces`](08_namespaces) | 12 | Пространства имён, `using`-объявление vs `using`-директива |
 
 ## Ключевые идеи лекции
 

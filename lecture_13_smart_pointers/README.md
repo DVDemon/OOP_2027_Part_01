@@ -24,7 +24,7 @@ cmake --build build
 ./build/07_custom_unique_ptr
 ./build/08_custom_shared_ptr
 ./build/09_polymorphism
-./build/10_best_practices
+./build/10_best_practices_pointers
 ```
 
 ## Примеры
@@ -40,7 +40,7 @@ cmake --build build
 | [`07_custom_unique_ptr`](07_custom_unique_ptr) | 7 | Учебная реализация `UniquePtr` |
 | [`08_custom_shared_ptr`](08_custom_shared_ptr) | 8 | Учебная реализация `SharedPtr` |
 | [`09_polymorphism`](09_polymorphism) | 9 | Умные указатели в полиморфных иерархиях, фабрика |
-| [`10_best_practices`](10_best_practices) | 10 | Практические рекомендации и типичные ошибки |
+| [`10_best_practices_pointers`](10_best_practices_pointers) | 10 | Практические рекомендации и типичные ошибки |
 
 ## Ключевые идеи лекции
 

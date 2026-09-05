@@ -55,7 +55,7 @@ STL — это **библиотека обобщённых алгоритмов 
 ---
 
 ## 2. `std::vector` — динамический массив
-> **Пример:** [01_vector](examples/lecture_15_stl/01_vector)
+> **Пример:** [01_vector](01_vector)
 
 ### Что это
 
@@ -142,7 +142,7 @@ pts.emplace_back(3, 4);         // сразу собрали Point{3,4} внут
 ---
 
 ## 3. `std::map` — ассоциативный массив
-> **Пример:** [02_map](examples/lecture_15_stl/02_map)
+> **Пример:** [02_map](02_map)
 
 ### Что это
 
@@ -227,7 +227,7 @@ for (int x : s) std::cout << x << ' ';    // 1 2 3 — по возрастани
 ---
 
 ## 4. Концепция итераторов
-> **Пример:** [03_iterators](examples/lecture_15_stl/03_iterators)
+> **Пример:** [03_iterators](03_iterators)
 
 ### Что такое итератор
 
@@ -291,7 +291,7 @@ for (auto& x : v)             // изменяем элементы на мест
 ---
 
 ## 5. Базовые алгоритмы STL
-> **Пример:** [04_algorithms](examples/lecture_15_stl/04_algorithms)
+> **Пример:** [04_algorithms](04_algorithms)
 
 Алгоритмы лежат в `<algorithm>` (поиск, сортировка, счёт, обход) и `<numeric>`
 (накопление, суммы). Все они принимают **пару итераторов** `[first, last)` и работают
@@ -407,7 +407,7 @@ std::sort(words.begin(), words.end(),
 ---
 
 ## 7. Прикладной пример: частотный анализ слов
-> **Пример:** [05_word_frequency](examples/lecture_15_stl/05_word_frequency)
+> **Пример:** [05_word_frequency](05_word_frequency)
 
 Соберём всё вместе: `std::map` для счётчиков, `std::vector` для результата,
 `std::sort` и лямбды для сортировки по частоте.

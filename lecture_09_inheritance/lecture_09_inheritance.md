@@ -40,7 +40,7 @@ public:
 };
 ```
 
-> Примеры: [01_FirstTryOnInheritance](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/01_FirstTryOnInheritance)
+> Пример: [01_inheritance_basics](01_inheritance_basics)
 
 ---
 
@@ -85,7 +85,7 @@ class PrivDerived : private Base {
 };
 ```
 
-> Примеры: [02_ProtectedMembers](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/02_ProtectedMembers)
+> Пример: [02_access_modifiers](02_access_modifiers)
 
 **Ключевой момент:** `private`-члены базового класса *существуют* в объекте наследника, но к ним нельзя обратиться напрямую -- только через методы базового класса.
 
@@ -127,7 +127,7 @@ public:
 // ~Base()
 ```
 
-> Примеры: [05_ConstructorsWithInheritance](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/05_ConstructorsWithInheritance), [07_InheritanceAndDestructors](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/07_InheritanceAndDestructors)
+> Пример: [03_construction_order](03_construction_order)
 
 ---
 
@@ -161,7 +161,7 @@ int main() {
 - Унаследованные конструкторы не инициализируют члены производного класса (используйте default member initializers)
 - Конструктор копирования и перемещения не наследуются через `using`
 
-> Примеры: [06_InheritingBaseConstructors](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/06_InheritingBaseConstructors)
+> Пример: [04_inheriting_constructors](04_inheriting_constructors)
 
 ---
 
@@ -206,7 +206,7 @@ int main() {
 }
 ```
 
-> Примеры: [04_ResurectingMembersBackInContext](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/04_ResurectingMembersBackInContext), [08_ReusedSymbolsInInheritance](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/08_ReusedSymbolsInInheritance)
+> Пример: [05_name_hiding](05_name_hiding)
 
 ---
 
@@ -311,7 +311,7 @@ public:
 };
 ```
 
-> Примеры: [13_Final](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/13_Final)
+> Пример: [08_final_specifier](08_final_specifier)
 
 ---
 

@@ -12,7 +12,7 @@
 ## Запуск
 
 ```bash
-./build/10_best_practices
+./build/10_best_practices_pointers
 ```
 
 ## Рекомендации

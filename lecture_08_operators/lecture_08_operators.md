@@ -52,9 +52,8 @@ public:
 
 > **Правило:** если оператор должен допускать неявное преобразование левого операнда — делайте свободную функцию.
 
-Примеры на GitHub:
-- [21_AdditionOperatorAsMember](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/21_AdditionOperatorAsMember)
-- [22_AdditionOperatorAsNonMember](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/22_AdditionOperatorAsNonMember)
+Примеры:
+- [01_member_vs_free](01_member_vs_free)
 
 ---
 
@@ -119,9 +118,8 @@ public:
 };
 ```
 
-Примеры на GitHub:
-- [28_OtherArithmeticOperators](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/28_OtherArithmeticOperators)
-- [29_CompoundOperators_ReusingOperators](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/29_CompoundOperators_ReusingOperators)
+Примеры:
+- [02_arithmetic_compound](02_arithmetic_compound)
 
 ---
 
@@ -168,9 +166,8 @@ public:
 
 > **Предпочитайте `++i`** — постфиксный создаёт копию.
 
-Примеры на GitHub:
-- [32_UnaryPrefixIncrementOperatorAsMember](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/32_UnaryPrefixIncrementOperatorAsMember)
-- [34_UnaryPostfixIncrementOperator](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/34_UnaryPostfixIncrementOperator)
+Примеры:
+- [03_increment_decrement](03_increment_decrement)
 
 ---
 
@@ -279,9 +276,8 @@ public:
 // Complex c; std::cin >> c;
 ```
 
-Примеры на GitHub:
-- [26_StreamInsertionOperator](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/26_StreamInsertionOperator)
-- [27_StreamExtractionOperator](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/27_StreamExtractionOperator)
+Примеры:
+- [05_io_operators](05_io_operators)
 
 ---
 
@@ -341,9 +337,8 @@ public:
 // double v = m[1][2];      // чтение
 ```
 
-Примеры на GitHub:
-- [23_SubscriptOperatorReading](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/23_SubscriptOperatorReading)
-- [24_SubscriptOperatorReadingWritting](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/24_SubscriptOperatorReadingWritting)
+Примеры:
+- [06_subscript](06_subscript)
 
 ---
 
@@ -400,8 +395,8 @@ public:
 };
 ```
 
-Примеры на GitHub:
-- [39_Functors](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/39_Functors)
+Примеры:
+- [07_call_functor](07_call_functor)
 
 ---
 
@@ -502,8 +497,8 @@ public:
 
 > **Правило:** операторы преобразования должны быть `explicit`, если только преобразование не является абсолютно естественным.
 
-Примеры на GitHub:
-- [30_CustomTypeConversions](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/30_CustomTypeConversions)
+Примеры:
+- [09_conversions](09_conversions)
 
 ---
 
@@ -554,8 +549,8 @@ auto s = "Hello"s; // std::string, а не const char*
 | `=` (copy) | `T& operator=(T)` или `T& operator=(const T&)` | `T&` | Метод |
 | `bool` | `explicit operator bool() const` | `bool` | Метод |
 
-Примеры на GitHub:
-- [36_CopyAssignmentOperator](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/36_CopyAssignmentOperator)
+Примеры:
+- [10_literals_canonical](10_literals_canonical)
 
 ---
 

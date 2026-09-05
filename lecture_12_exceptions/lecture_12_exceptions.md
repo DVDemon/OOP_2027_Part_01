@@ -38,7 +38,7 @@ int main() {
 
 **Проблемы:** можно проигнорировать ошибку, загрязнение сигнатур, невозможность сообщить об ошибке из конструктора.
 
-> Примеры: [17_ReturnError](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/17_ReturnError)
+> Пример: [01_error_codes_vs_exceptions](01_error_codes_vs_exceptions)
 
 ### Исключения (C++ стиль)
 
@@ -88,7 +88,7 @@ int main() {
 
 **Порядок catch-блоков важен:** от наиболее конкретного к наиболее общему. Компилятор выбирает первый подходящий блок.
 
-> Примеры: [18_ComplexException](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/18_ComplexException)
+> Пример: [02_throw_try_catch](02_throw_try_catch)
 
 ---
 
@@ -335,7 +335,7 @@ static_assert(noexcept(A().bar()) == false);
 - `std::vector::push_back` использует move только если move-конструктор `noexcept`
 - Деструкторы неявно `noexcept`
 
-> Примеры: [21_Noexcept](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/21_Noexcept)
+> Пример: [08_noexcept](08_noexcept)
 
 ---
 
@@ -387,7 +387,7 @@ int main() {
 }
 ```
 
-> Примеры: [19_ExceptionInCatch](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/19_ExceptionInCatch)
+> Пример: [09_rethrow](09_rethrow)
 
 **Правило:** для повторного выброса всегда используйте `throw;`, а не `throw e;`.
 
@@ -512,7 +512,7 @@ while (!queue.empty()) {
 }
 ```
 
-> Примеры: [20_ExFast](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/20_ExFast)
+> Пример: [10_advanced](10_advanced)
 
 ---
 

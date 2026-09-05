@@ -59,7 +59,7 @@ public:
 
 Теперь `Report` зависит только от абстракций. Можно подставить любую базу данных или формат.
 
-> **GitHub:** [01_Coupling](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/01_Coupling), [02_Coupling](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/02_Coupling)
+> **Пример:** [01_coupling_cohesion](01_coupling_cohesion)
 
 ---
 
@@ -123,7 +123,7 @@ std::string Widget::get_name() const {
 
 **Важно:** деструктор нельзя оставлять `= default` в заголовке — компилятор не знает, как удалить `Impl`.
 
-> **GitHub:** [03_Pimpl](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/03_Pimpl), [04_Pimpl](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/04_Pimpl), [05_Pimpl](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/05_Pimpl)
+> **Пример:** [02_pimpl](02_pimpl)
 
 ---
 
@@ -162,7 +162,7 @@ void Order::ship(Warehouse& wh) {
 }
 ```
 
-> **GitHub:** [06_Tda](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/06_Tda)
+> **Пример:** [03_tell_dont_ask](03_tell_dont_ask)
 
 ---
 
@@ -196,7 +196,7 @@ public:
 };
 ```
 
-> **GitHub:** [07_Cqrs](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/07_Cqrs), [08_Cqrs](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/08_Cqrs)
+> **Пример:** [04_cqrs](04_cqrs)
 
 ---
 
@@ -298,7 +298,7 @@ public:
 
 Теперь каждый класс имеет ровно одну причину для изменения.
 
-> **GitHub:** [09_Srp](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/09_Srp), [10_Srp](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/10_Srp), [11_Srp](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/11_Srp), [12_Srp](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/12_Srp)
+> **Пример:** [05_srp](05_srp)
 
 ---
 
@@ -355,7 +355,7 @@ double total_area(const std::vector<std::unique_ptr<Shape>>& shapes) {
 
 Добавление `Triangle` не требует изменения `total_area` — только расширение иерархии.
 
-> **GitHub:** [13_Ocp](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/13_Ocp)
+> **Пример:** [06_ocp](06_ocp)
 
 ---
 
@@ -427,7 +427,7 @@ public:
 - **Постусловия** подтипа не могут быть слабее.
 - **Инварианты** базового типа должны сохраняться.
 
-> **GitHub:** [14_Lsp](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/14_Lsp), [15_Lsp](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/15_Lsp)
+> **Пример:** [07_lsp](07_lsp)
 
 ---
 
@@ -495,7 +495,7 @@ public:
 };
 ```
 
-> **GitHub:** [16_Isp](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/16_Isp), [17_Isp](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/17_Isp)
+> **Пример:** [08_isp](08_isp)
 
 ---
 
@@ -563,7 +563,7 @@ int main() {
 
 **Ключевая идея:** абстракция `IUserRepository` принадлежит слою бизнес-логики, а не слою инфраструктуры. Направление зависимости инвертировано.
 
-> **GitHub:** [18_Dip](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/18_Dip), [19_Dip](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/19_Dip)
+> **Пример:** [09_dip](09_dip)
 
 ---
 

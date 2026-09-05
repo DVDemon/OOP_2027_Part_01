@@ -93,7 +93,7 @@ struct SDL_Deleter {
 std::unique_ptr<SDL_Window, SDL_Deleter> window(SDL_CreateWindow(/*...*/));
 ```
 
-> Примеры: [15_UniquePointers](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection06_07/15_UniquePointers), [16_CustomUniquePointer](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection06_07/16_CustomUniquePointer)
+> Пример: [02_unique_ptr](02_unique_ptr)
 
 ---
 
@@ -149,7 +149,7 @@ shared_ptr<T> sp:
                     +-------------------+
 ```
 
-> Примеры: [17_SharedPtr](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection06_07/17_SharedPtr), [18_CustomShared](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection06_07/18_CustomShared)
+> Пример: [03_shared_ptr](03_shared_ptr)
 
 ---
 
@@ -210,7 +210,7 @@ std::cout << weak.expired() << std::endl;  // true
 auto locked = weak.lock();  // Возвращает пустой shared_ptr
 ```
 
-> Примеры: [22_Weak_ptr](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection06_07/22_Weak_ptr), [23_Weak_ptr_deadlock](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection06_07/23_Weak_ptr_deadlock), [21_Dead_lock](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection06_07/21_Dead_lock)
+> Пример: [04_weak_ptr](04_weak_ptr)
 
 ---
 
@@ -243,7 +243,7 @@ int main() {
 
 **Ограничение:** нельзя вызывать `shared_from_this()` из конструктора -- `shared_ptr` ещё не создан.
 
-> Примеры: [20_Enable_shared_from_this](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection06_07/20_Enable_shared_from_this)
+> Пример: [05_enable_shared_from_this](05_enable_shared_from_this)
 
 ---
 
@@ -287,7 +287,7 @@ int main() {
 }
 ```
 
-> Примеры: [19_Dynamic_pointer_cast](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection06_07/19_Dynamic_pointer_cast)
+> Пример: [06_pointer_cast](06_pointer_cast)
 
 ---
 

@@ -119,7 +119,7 @@ int main() {
 }
 ```
 
-> **Пример на GitHub:** [01_FirstCppProgram](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/01_FirstCppProgram)
+> **Пример:** [01_first_program](01_first_program)
 
 Функция `main` — точка входа в программу. Стандарт допускает две формы:
 
@@ -320,7 +320,7 @@ cmake --build build
 
 Google Test (gtest) — фреймворк для модульного тестирования C++ кода.
 
-> **Пример на GitHub:** [06_GTest](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/06_GTest)
+> **Пример:** [03_gtest_calculator](03_gtest_calculator)
 
 Подключение через CMake (FetchContent):
 
@@ -430,7 +430,7 @@ int main() {
 
 ### Целочисленные типы
 
-> **Примеры на GitHub:** [07_IntegerModifiers](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/07_IntegerModifiers)
+> **Пример:** [04_basic_types](04_basic_types)
 
 ```cpp
 #include <iostream>
@@ -469,7 +469,7 @@ int main() {
 
 ### Типы с плавающей точкой
 
-> **Пример на GitHub:** [08_FractionalNumbers](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/08_FractionalNumbers)
+> **Пример:** [04_basic_types](04_basic_types)
 
 ```cpp
 float f = 3.14f;          // 4 байта, ~7 значащих цифр
@@ -483,7 +483,7 @@ double planck   = 6.626e-34;
 
 ### Логический тип и символы
 
-> **Примеры на GitHub:** [09_Booleans](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/09_Booleans), [10_CharactersAndText](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/10_CharactersAndText)
+> **Пример:** [04_basic_types](04_basic_types)
 
 ```cpp
 bool flag = true;          // 1 байт
@@ -567,7 +567,7 @@ Widget w{};      // Создание объекта
 
 ### `const` — неизменяемость в рантайме
 
-> **Пример на GitHub:** [17_Constants](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/17_Constants)
+> **Пример:** [06_const_constexpr](06_const_constexpr)
 
 ```cpp
 const int max_size = 100;   // значение фиксировано после инициализации
@@ -576,7 +576,7 @@ const int max_size = 100;   // значение фиксировано посл�
 
 ### `constexpr` — вычисление на этапе компиляции
 
-> **Пример на GitHub:** [18_ConstantExpressions](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/18_ConstantExpressions)
+> **Пример:** [06_const_constexpr](06_const_constexpr)
 
 ```cpp
 constexpr int square(int x) { return x * x; }
@@ -599,7 +599,7 @@ constexpr double pi = 3.14159265358979;
 
 ### `auto` — вывод типа
 
-> **Пример на GitHub:** [11_Auto](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/11_Auto)
+> **Пример:** [07_auto](07_auto)
 
 ```cpp
 auto x = 42;           // int
@@ -785,19 +785,11 @@ calculator/
 
 | Тема | Пример |
 |------|--------|
-| Первая программа | [01_FirstCppProgram](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/01_FirstCppProgram) |
-| Единицы трансляции | [02_translation_units](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/02_translation_units) |
-| Калькулятор с тестами | [03_gtest_calculator](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/03_gtest_calculator) |
-| Базовые типы | [04_basic_types](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/04_basic_types) |
-| Инициализация | [05_initialization](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/05_initialization) |
-| const / constexpr | [06_const_constexpr](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/06_const_constexpr) |
-| auto | [07_auto](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/07_auto) |
-| Пространства имён | [08_namespaces](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/08_namespaces) |
-| Google Test | [06_GTest](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/06_GTest) |
-| Целые числа | [07_IntegerModifiers](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/07_IntegerModifiers) |
-| Дробные числа | [08_FractionalNumbers](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/08_FractionalNumbers) |
-| Логический тип | [09_Booleans](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/09_Booleans) |
-| Символы и текст | [10_CharactersAndText](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/10_CharactersAndText) |
-| auto | [11_Auto](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/11_Auto) |
-| Константы | [17_Constants](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/17_Constants) |
-| constexpr | [18_ConstantExpressions](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/18_ConstantExpressions) |
+| Первая программа: `main`, `argc`/`argv` | [01_first_program](01_first_program) |
+| Единицы трансляции и ODR | [02_translation_units](02_translation_units) |
+| CMake + Google Test: проект «Калькулятор» | [03_gtest_calculator](03_gtest_calculator) |
+| Базовые типы, литералы, `sizeof` | [04_basic_types](04_basic_types) |
+| Инициализация переменных | [05_initialization](05_initialization) |
+| `const` vs `constexpr` | [06_const_constexpr](06_const_constexpr) |
+| Вывод типа `auto` | [07_auto](07_auto) |
+| Пространства имён | [08_namespaces](08_namespaces) |

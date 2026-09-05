@@ -102,8 +102,8 @@ void print(const Fraction& f) {
 print(42); // неявная конверсия int -> Fraction(42, 1)
 ```
 
-Примеры на GitHub:
-- [23_Constructors](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/23_Constructors)
+Примеры:
+- [01_constructor_kinds](01_constructor_kinds)
 
 ---
 
@@ -245,8 +245,8 @@ public:
 
 \* — генерируется, но deprecated (может быть убрано в будущем стандарте).
 
-Примеры на GitHub:
-- [24_DefaultedConstructors](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/24_DefaultedConstructors)
+Примеры:
+- [05_default_delete](05_default_delete)
 
 ---
 
@@ -308,9 +308,8 @@ public:
 // Уничтожение C: C dtor -> B dtor -> A dtor
 ```
 
-Примеры на GitHub:
-- [28_Destructors](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/28_Destructors)
-- [29_OrderOfConstructorDestructorCalls](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/29_OrderOfConstructorDestructorCalls)
+Примеры:
+- [06_destructors_order](06_destructors_order)
 
 ---
 
@@ -358,8 +357,8 @@ void readFile(const std::string& path) {
 }
 ```
 
-Примеры на GitHub:
-- [27_ManagingClassObjectsThroughPointers](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/27_ManagingClassObjectsThroughPointers)
+Примеры:
+- [07_raii](07_raii)
 
 ---
 

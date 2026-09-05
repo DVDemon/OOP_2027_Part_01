@@ -68,7 +68,7 @@ int main() {
 
 ## 2. Передача параметров
 
-> **Пример на GitHub:** [02_StatementsAndFunctions](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/02_StatementsAndFunctions)
+> **Пример:** [02_parameter_passing](02_parameter_passing)
 
 ### По значению (by value)
 
@@ -406,7 +406,7 @@ std::vector<int> bad_return() {
 
 ### Указатели на функции
 
-> **Пример на GitHub:** [01_ParameterFunction](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection12_13/01_ParameterFunction)
+> **Пример:** [08_function_pointers](08_function_pointers)
 
 Функция в C++ имеет адрес, который можно сохранить в указателе:
 
@@ -749,5 +749,13 @@ constexpr int gcd(int a, int b);              // НОД (алгоритм Евк
 
 | Тема | Пример |
 |------|--------|
-| Функции (основы) | [02_StatementsAndFunctions](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection00_01/02_StatementsAndFunctions) |
-| Указатели на функции | [01_ParameterFunction](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection12_13/01_ParameterFunction) |
+| Объявление vs определение функции. Прототипы | [01_declaration_definition](01_declaration_definition) |
+| Передача параметров | [02_parameter_passing](02_parameter_passing) |
+| Перегрузка функций | [03_overloading](03_overloading) |
+| Алгоритм разрешения перегрузки | [04_overload_resolution](04_overload_resolution) |
+| Аргументы по умолчанию | [05_default_arguments](05_default_arguments) |
+| `inline`-функции и `constexpr`-функции | [06_inline_constexpr](06_inline_constexpr) |
+| Возвращаемые значения. RVO и NRVO | [07_rvo_nrvo](07_rvo_nrvo) |
+| Указатели на функции. `std::function` | [08_function_pointers](08_function_pointers) |
+| Рекурсия: прямая, хвостовая, взаимная | [09_recursion](09_recursion) |
+| ADL (Argument-Dependent Lookup) | [10_adl](10_adl) |

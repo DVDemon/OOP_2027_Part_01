@@ -16,7 +16,7 @@
 ---
 
 ## 1. Что такое POCO
-> **Пример:** [01_what_is_poco](examples/lecture_16_poco_http/01_what_is_poco)
+> **Пример:** [01_what_is_poco](01_what_is_poco)
 
 **POCO** (POrtable COmponents) — кроссплатформенная C++ библиотека, предоставляющая сетевые, файловые, XML/JSON и другие компоненты.
 
@@ -34,7 +34,7 @@
 ---
 
 ## 2. Обзор модулей POCO
-> **Пример:** [02_modules_overview](examples/lecture_16_poco_http/02_modules_overview)
+> **Пример:** [02_modules_overview](02_modules_overview)
 
 | Модуль | Назначение | Ключевые классы |
 |--------|-----------|----------------|
@@ -51,7 +51,7 @@
 ---
 
 ## 3. Установка POCO
-> **Пример:** [03_installation](examples/lecture_16_poco_http/03_installation)
+> **Пример:** [03_installation](03_installation)
 
 ### macOS (Homebrew)
 
@@ -85,7 +85,7 @@ sudo cmake --install .
 ---
 
 ## 4. Интеграция с CMake
-> **Пример:** [04_cmake_integration](examples/lecture_16_poco_http/04_cmake_integration)
+> **Пример:** [04_cmake_integration](04_cmake_integration)
 
 ### CMakeLists.txt
 
@@ -117,7 +117,7 @@ cmake -B build -DCMAKE_TOOLCHAIN_FILE=[vcpkg root]/scripts/buildsystems/vcpkg.cm
 ---
 
 ## 5. Архитектура HTTP-сервера
-> **Пример:** [05_server_architecture](examples/lecture_16_poco_http/05_server_architecture)
+> **Пример:** [05_server_architecture](05_server_architecture)
 
 POCO HTTP-сервер построен на трёх ключевых классах:
 
@@ -145,7 +145,7 @@ HTTPServer
 ---
 
 ## 6. Модель пула потоков
-> **Пример:** [06_thread_pool_model](examples/lecture_16_poco_http/06_thread_pool_model)
+> **Пример:** [06_thread_pool_model](06_thread_pool_model)
 
 `HTTPServer` использует пул потоков для обработки запросов:
 
@@ -179,7 +179,7 @@ params->setTimeout(Poco::Timespan(15, 0));  // таймаут 15 секунд
 ---
 
 ## 7. Жизненный цикл HTTPRequestHandler
-> **Пример:** [07_handler_lifecycle](examples/lecture_16_poco_http/07_handler_lifecycle)
+> **Пример:** [07_handler_lifecycle](07_handler_lifecycle)
 
 **Один экземпляр обработчика = один HTTP-запрос.** Это важно:
 
@@ -206,7 +206,7 @@ public:
 ---
 
 ## 8. HTTPServerRequest и HTTPServerResponse
-> **Пример:** [08_request_response](examples/lecture_16_poco_http/08_request_response)
+> **Пример:** [08_request_response](08_request_response)
 
 ### HTTPServerRequest — входящий запрос
 
@@ -253,7 +253,7 @@ void handleRequest(HTTPServerRequest& request, HTTPServerResponse& response) {
 ---
 
 ## 9. ServerApplication: жизненный цикл
-> **Пример:** [09_server_application](examples/lecture_16_poco_http/09_server_application)
+> **Пример:** [09_server_application](09_server_application)
 
 `Poco::Util::ServerApplication` — базовый класс для серверных приложений. Он управляет:
 
@@ -296,7 +296,7 @@ POCO_SERVER_MAIN(MyServerApp)
 ---
 
 ## 10. Полный рабочий пример: Hello World HTTP-сервер
-> **Пример:** [10_hello_http_server](examples/lecture_16_poco_http/10_hello_http_server)
+> **Пример:** [10_hello_http_server](10_hello_http_server)
 
 ### Файл: main.cpp
 

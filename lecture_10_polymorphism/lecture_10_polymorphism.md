@@ -83,7 +83,7 @@ int main() {
 }
 ```
 
-> Примеры: [09_PolymorphismWithVirtualFunctions](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/09_PolymorphismWithVirtualFunctions)
+> Пример: [02_virtual_functions](02_virtual_functions)
 
 ---
 
@@ -149,7 +149,7 @@ public:
 };
 ```
 
-> Примеры: [11_Override](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/11_Override)
+> Пример: [04_override_final](04_override_final)
 
 ---
 
@@ -199,7 +199,7 @@ public:
 };
 ```
 
-> Примеры: [18_PureVirtualFunctionsAndAbstractClasses](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/18_PureVirtualFunctionsAndAbstractClasses)
+> Пример: [05_abstract_interfaces](05_abstract_interfaces)
 
 ---
 
@@ -284,7 +284,7 @@ void identify(const Base& b) {
 }
 ```
 
-> Примеры: [16_DynamicCasts](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/16_DynamicCasts), [17_TypeIdOperator](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/17_TypeIdOperator)
+> Пример: [07_dynamic_cast_rtti](07_dynamic_cast_rtti)
 
 **Внимание:** частое использование `dynamic_cast` -- признак плохого дизайна. Предпочитайте виртуальные функции.
 
@@ -346,7 +346,7 @@ void example() {
 
 `final` помогает компилятору девиртуализировать вызовы, повышая производительность.
 
-> Примеры: [12_InheritanceAndPolymorphismWithStaticMembers](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/12_InheritanceAndPolymorphismWithStaticMembers)
+> Пример: [09_devirtualization](09_devirtualization)
 
 ---
 
@@ -377,7 +377,7 @@ int main() {
 }
 ```
 
-> Примеры: [10_PolymorphicObjectsStoredInCollections](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/10_PolymorphicObjectsStoredInCollections)
+> Пример: [10_polymorphic_collections](10_polymorphic_collections)
 
 ### Паттерн Factory Method
 
@@ -417,7 +417,7 @@ int main() {
 }
 ```
 
-> Примеры: [20_FactoryMethod](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/20_FactoryMethod)
+> Пример: [10_polymorphic_collections](10_polymorphic_collections)
 
 ### Паттерн Strategy
 

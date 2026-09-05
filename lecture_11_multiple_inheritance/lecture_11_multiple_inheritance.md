@@ -103,7 +103,7 @@ int main() {
 
 В объекте `Copier` существуют **две** независимые копии `Device`, что обычно нежелательно.
 
-> Примеры: [17_Multi](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection04_05/17_Multi)
+> Пример: [02_diamond_problem](02_diamond_problem)
 
 ---
 

@@ -175,8 +175,8 @@ public:
 - **Exception safety** — если копирование (в параметре) бросит исключение, `*this` не изменится.
 - **Переиспользование** — один оператор для копирования и перемещения.
 
-Примеры на GitHub:
-- [34_ruleOfFour](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/34_ruleOfFour)
+Примеры:
+- [04_copy_and_swap](04_copy_and_swap)
 
 ---
 

@@ -39,8 +39,8 @@ public:
 
 > **Конвенция:** `struct` используют для простых агрегатов данных (POD), `class` — когда есть инварианты и поведение.
 
-Примеры на GitHub:
-- [31_Struct](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/31_Struct)
+Примеры:
+- [01_struct_vs_class](01_struct_vs_class)
 
 ---
 
@@ -78,9 +78,8 @@ void Point::print() const {
 }
 ```
 
-Примеры на GitHub:
-- [22_YourFirstClass](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/22_YourFirstClass)
-- [26_ClassAcrossMultipleFiles](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/26_ClassAcrossMultipleFiles)
+Примеры:
+- [02_fields_methods](02_fields_methods)
 
 ---
 
@@ -110,8 +109,8 @@ private:
 };
 ```
 
-Примеры на GitHub:
-- [25_SettersAndGetters](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/25_SettersAndGetters)
+Примеры:
+- [03_access_modifiers](03_access_modifiers)
 
 ---
 
@@ -153,8 +152,8 @@ public:
 // auto q = QueryBuilder().from("users").where("age > 18").limit(10).build();
 ```
 
-Примеры на GitHub:
-- [30_ThisPointer](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/30_ThisPointer)
+Примеры:
+- [04_this_fluent](04_this_fluent)
 
 ---
 
@@ -189,8 +188,8 @@ private:
 };
 ```
 
-Примеры на GitHub:
-- [33_ConstMember](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/33_ConstMember)
+Примеры:
+- [05_const_mutable](05_const_mutable)
 
 ---
 
@@ -347,8 +346,8 @@ struct Packed {
 #pragma pack(pop)
 ```
 
-Примеры на GitHub:
-- [32_SizeOfClassObjects](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/32_SizeOfClassObjects)
+Примеры:
+- [09_sizeof_padding](09_sizeof_padding)
 
 ---
 
@@ -406,10 +405,8 @@ int Widget::getResult() const { return pImpl_->counter; }
 - Стабильный ABI
 - Полное сокрытие деталей из заголовочного файла
 
-Примеры на GitHub:
-- [03_Pimpl](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/03_Pimpl)
-- [04_Pimpl](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/04_Pimpl)
-- [05_Pimpl](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection10_11/05_Pimpl)
+Примеры:
+- [10_encapsulation_pimpl](10_encapsulation_pimpl)
 
 ---
 

@@ -63,7 +63,7 @@ void foo() {
 
 ## 2. Адрес и разыменование. Арифметика указателей
 
-> **Примеры на GitHub:** [01_DeclaringAndUsingPointers](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/01_DeclaringAndUsingPointers)
+> **Пример:** [02_address_deref](02_address_deref)
 
 Указатель — переменная, хранящая адрес другой переменной.
 
@@ -123,7 +123,7 @@ std::ptrdiff_t diff = end - begin;   // 5 (количество элементо
 
 ## 3. Указатели и массивы
 
-> **Примеры на GitHub:** [02_PointerArithmeticAndArrays](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/02_PointerArithmeticAndArrays)
+> **Пример:** [03_pointers_arrays](03_pointers_arrays)
 
 Имя массива в большинстве контекстов неявно преобразуется в указатель на первый элемент:
 
@@ -162,7 +162,7 @@ void print_array_ref(int (&data)[N]) {
 
 ## 4. `const`-указатели и `nullptr`
 
-> **Примеры на GitHub:** [03_ConstPointers](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/03_ConstPointers)
+> **Пример:** [04_const_pointers_nullptr](04_const_pointers_nullptr)
 
 Четыре комбинации `const` с указателями:
 
@@ -224,7 +224,7 @@ foo(nullptr);    // однозначно вызывает foo(int*)
 
 ## 5. Динамическая память: `new`/`delete`
 
-> **Примеры на GitHub:** [04_DynamicMemory](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/04_DynamicMemory)
+> **Пример:** [05_dynamic_memory](05_dynamic_memory)
 
 ```cpp
 #include <iostream>
@@ -271,7 +271,7 @@ int main() {
 
 ## 6. Типичные ошибки работы с памятью
 
-> **Примеры на GitHub:** [05_DanglingPointer](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/05_DanglingPointer)
+> **Пример:** [06_memory_errors](06_memory_errors)
 
 ### Dangling pointer (висячий указатель)
 
@@ -379,7 +379,7 @@ endif()
 
 ## 8. lvalue-ссылки
 
-> **Примеры на GitHub:** [08_References](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/08_References)
+> **Пример:** [08_references](08_references)
 
 Ссылка — это альтернативное имя (alias) для существующей переменной:
 
@@ -471,7 +471,7 @@ for (const auto& n : numbers) {
 
 ## 9. Категории значений
 
-> **Примеры на GitHub:** [16_LvalueAndRValue](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/16_LvalueAndRValue)
+> **Пример:** [09_value_categories](09_value_categories)
 
 В C++ каждое выражение имеет тип и **категорию значения**:
 
@@ -554,7 +554,7 @@ void* vp = p;          // любой указатель → void* (неявно)
 
 ### `static_cast` — безопасное явное приведение
 
-> **Примеры на GitHub:** [14_StaticCast](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/14_StaticCast)
+> **Пример:** [10_type_casts](10_type_casts)
 
 ```cpp
 double pi = 3.14159;
@@ -570,7 +570,7 @@ double* dp = static_cast<double*>(vp);
 
 ### `const_cast` — снятие/добавление `const`
 
-> **Примеры на GitHub:** [15_ConstCast](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/15_ConstCast)
+> **Пример:** [10_type_casts](10_type_casts)
 
 ```cpp
 const int x = 42;
@@ -740,12 +740,13 @@ void destroy_array(int* array);
 
 | Тема | Пример |
 |------|--------|
-| Объявление указателей | [01_DeclaringAndUsingPointers](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/01_DeclaringAndUsingPointers) |
-| Арифметика указателей | [02_PointerArithmeticAndArrays](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/02_PointerArithmeticAndArrays) |
-| const-указатели | [03_ConstPointers](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/03_ConstPointers) |
-| Динамическая память | [04_DynamicMemory](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/04_DynamicMemory) |
-| Dangling pointer | [05_DanglingPointer](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/05_DanglingPointer) |
-| Ссылки | [08_References](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/08_References) |
-| static_cast | [14_StaticCast](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/14_StaticCast) |
-| const_cast | [15_ConstCast](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/15_ConstCast) |
-| lvalue и rvalue | [16_LvalueAndRValue](https://github.com/DVDemon/mai_oop_examples_public/tree/main/examples/lection02_03/16_LvalueAndRValue) |
+| Модель памяти процесса | [01_memory_model](01_memory_model) |
+| Адрес и разыменование. Арифметика указателей | [02_address_deref](02_address_deref) |
+| Указатели и массивы | [03_pointers_arrays](03_pointers_arrays) |
+| `const`-указатели и указатели на `const`. `nullptr` | [04_const_pointers_nullptr](04_const_pointers_nullptr) |
+| Динамическая память: `new`/`delete`, `new[]`/`delete[]` | [05_dynamic_memory](05_dynamic_memory) |
+| Типичные ошибки: dangling pointer, memory leak, double free | [06_memory_errors](06_memory_errors) |
+| Санитайзеры (`-fsanitize`) | [07_sanitizers](07_sanitizers) |
+| lvalue-ссылки. Указатели vs ссылки. Константные ссылки | [08_references](08_references) |
+| Range-for со ссылками. Категории значений | [09_value_categories](09_value_categories) |
+| Приведение типов | [10_type_casts](10_type_casts) |
