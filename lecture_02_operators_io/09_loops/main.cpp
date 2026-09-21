@@ -22,7 +22,7 @@ int main() {
 
     // ПЛОХО: for (auto name : names) — копирует каждую строку.
     // ХОРОШО: const auto& — без копирования, без изменения.
-    for (const auto& name : names) {
+    for (const std::string & name : names) {
         std::cout << name << ' ';
     }
     std::cout << '\n';

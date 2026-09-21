@@ -7,6 +7,8 @@ int main() {
     constexpr std::size_t n = 10;
     int* arr = new int[n]{};
 
+    arr[10] = 42;
+
     // Корректный доступ строго в пределах [0, n).
     for (std::size_t i = 0; i < n; ++i) {
         arr[i] = static_cast<int>(i * i);
@@ -21,7 +23,7 @@ int main() {
 
     delete[] arr;  // нет утечки -> LeakSanitizer молчит
 
-    std::cout << "Соберите с -DENABLE_SANITIZERS=ON и запустите — ошибок нет.\n";
-    std::cout << "В README показано, какую диагностику дал бы код с ошибкой.\n";
+    // std::cout << "Соберите с -DENABLE_SANITIZERS=ON и запустите — ошибок нет.\n";
+    // std::cout << "В README показано, какую диагностику дал бы код с ошибкой.\n";
     return 0;
 }

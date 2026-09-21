@@ -32,6 +32,7 @@ int main() {
     std::cout << "\n=== Переполнение знакового int — UB ===\n";
     int big = std::numeric_limits<int>::max();
     std::cout << "int max = " << big << '\n';
+    std::cout << "int max = " << (big+1) << '\n';
     // ПЛОХО: big += 1; — неопределённое поведение для signed.
     // ХОРОШО: проверить ДО операции, не приведёт ли она к переполнению.
     int addend = 1;

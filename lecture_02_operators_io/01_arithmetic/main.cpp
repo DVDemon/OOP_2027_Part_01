@@ -3,6 +3,11 @@
 
 #include "safe_arith.h"
 
+
+int foo(int a, int b) {
+    return a+b;
+}
+
 int main() {
     int a = 17, b = 5;
 
@@ -21,7 +26,7 @@ int main() {
     // Чтобы получить дробный результат, нужно привести к double явно.
     std::cout << "17 / 5         = " << (17 / 5) << "   (целое!)\n";
     std::cout << "17 / 5.0       = " << (17 / 5.0) << "  (double)\n";
-    std::cout << "double(17)/5   = " << (static_cast<double>(17) / 5) << "  (double)\n";
+    std::cout << "double(17)/5   = " << (static_cast<double>(a+b) / 5) << "  (double)\n";
 
     std::cout << "\n=== Остаток для отрицательных чисел ===\n";
     // Оператор % сохраняет знак делимого: -7 % 3 == -1.
@@ -32,13 +37,16 @@ int main() {
     std::cout << "\n=== Защита от деления на ноль ===\n";
     // ПЛОХО: a / 0 — неопределённое поведение (UB), программа может рухнуть.
     // ХОРОШО: проверяем делитель заранее и возвращаем std::optional.
-    for (int divisor : {5, 0}) {
+    
+    for (int divisor : {5, 0 , 27, 13 , foo(a,b)}) {
         if (auto q = arith::safe_divide(a, divisor); q.has_value()) {
             std::cout << a << " / " << divisor << " = " << *q << '\n';
         } else {
             std::cout << a << " / " << divisor << " -> деление на ноль отклонено\n";
         }
     }
+
+    
 
     return 0;
 }

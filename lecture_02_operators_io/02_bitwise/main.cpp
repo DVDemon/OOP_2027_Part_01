@@ -31,6 +31,7 @@ int main() {
     std::cout << "can_read           = " << std::boolalpha << can_read << '\n';
 
     permissions |= EXECUTE;   // добавить флаг
+    
     std::cout << "после |= EXECUTE   = " << std::bitset<3>(permissions) << '\n';
 
     permissions &= ~WRITE;    // сбросить флаг (И с инверсией маски)

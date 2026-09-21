@@ -35,6 +35,12 @@ int main() {
     std::cout << "\n=== Чтение и проверка корректности ввода ===\n";
     // Чтобы пример запускался без интерактивного ввода, читаем из
     // istringstream. С реальным вводом это был бы std::cin.
+
+    int a1 {0};
+
+    std::cin >> a1;
+    std::cout << "Wow its " << a1 << "\n" << std::endl;
+
     std::istringstream input("42 not_a_number");
 
     int value = 0;

@@ -34,6 +34,9 @@ int main() {
     bool r2 = expensive_check("left", true) || expensive_check("right", false);
     std::cout << "результат = " << r2 << " (right не вычислялся)\n";
 
+    bool r3 = expensive_check("left", true) && expensive_check("right", false);
+    std::cout << "результат = " << r3 << " (все вычисляется)\n";
+
     std::cout << "\n=== Практика: безопасный доступ по указателю ===\n";
     int value = 42;
     int* ptr = &value;

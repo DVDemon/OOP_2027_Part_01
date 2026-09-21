@@ -12,6 +12,9 @@
 //   argc — количество аргументов (всегда >= 1, argv[0] — имя программы);
 //   argv — массив C-строк, argv[argc] == nullptr.
 int main(int argc, char* argv[]) {
+
+
+    
     std::cout << "Hello, C++20!\n";
 
     std::cout << "Передано аргументов (включая имя программы): " << argc << '\n';

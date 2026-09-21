@@ -10,9 +10,7 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
     set(CMAKE_BUILD_TYPE Debug CACHE STRING "Тип сборки: Debug | Release | RelWithDebInfo" FORCE)
 endif()
 
-# Опциональные санитайзеры (см. пример 07_sanitizers).
-# Включение: cmake -S . -B build -DENABLE_SANITIZERS=ON
-option(ENABLE_SANITIZERS "Собирать с AddressSanitizer + UndefinedBehaviorSanitizer" OFF)
+
 
 # Общие флаги: предупреждения + отладочная информация для отладчика.
 function(oop_flags target)
@@ -21,10 +19,8 @@ function(oop_flags target)
         target_link_options(${target} PRIVATE /DEBUG)
     else()
         target_compile_options(${target} PRIVATE -Wall -Wextra -Wpedantic -g)
-        if(ENABLE_SANITIZERS)
-            target_compile_options(${target} PRIVATE -fsanitize=address,undefined)
-            target_link_options(${target} PRIVATE -fsanitize=address,undefined)
-        endif()
+        target_compile_options(${target} PRIVATE -fsanitize=address,undefined)
+        target_link_options(${target} PRIVATE -fsanitize=address,undefined)
     endif()
 endfunction()
 
