@@ -14,6 +14,7 @@ int main() {
     std::cout << std::boolalpha;
     std::cout << "is_even(4) = " << rec::is_even(4) << '\n';  // true
     std::cout << "is_odd(7)  = " << rec::is_odd(7) << '\n';   // true
+    std::cout << "is_odd(6)  = " << rec::is_odd(6) << '\n';   // false
 
     return 0;
 }

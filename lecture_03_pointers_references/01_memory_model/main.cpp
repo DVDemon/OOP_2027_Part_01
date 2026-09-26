@@ -8,11 +8,16 @@ int global_var = 10;
 // Функция — её код лежит в сегменте кода (read-only).
 void some_function() {}
 
+int foo() {
+    static int counter{};
+    return ++counter;
+}
+
 void demo() {
     int local_var = 20;            // стек
     static int static_var = 30;    // статическая память (инициализируется один раз)
     int* heap_var = new int(40);   // указатель на стеке, данные — в куче
-
+    
     std::cout << "--- Адреса объектов разных сегментов ---\n";
     std::cout << "Сегмент кода (функция):    " << reinterpret_cast<const void*>(&some_function) << '\n';
     std::cout << "Статическая (global_var):  " << static_cast<const void*>(&global_var) << '\n';
@@ -24,7 +29,15 @@ void demo() {
 }
 
 int main() {
-    std::cout << "Стек растёт вниз, куча — вверх; адреса различаются на порядки.\n\n";
+
+    std::cout << foo() << std::endl;
+    std::cout << foo() << std::endl;
+    std::cout << foo() << std::endl;
+    std::cout << foo() << std::endl;
+
+    // int aa {2};
+
+    // std::cout << "Стек растёт вниз, куча — вверх; адреса различаются на порядки.\n\n";
     demo();
 
     // Стек: быстрое выделение/освобождение, но размер ограничен (обычно 1-8 МБ).

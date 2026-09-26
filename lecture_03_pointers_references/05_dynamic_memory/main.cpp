@@ -20,6 +20,7 @@ int main() {
     std::cout << "*p = " << *p << '\n';
     delete p;  // парное освобождение
 
+
     // --- Массив: new[] / delete[] ---
     int* arr = new int[5]{10, 20, 30, 40, 50};
     std::cout << "массив: ";

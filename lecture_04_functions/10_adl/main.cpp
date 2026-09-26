@@ -2,63 +2,59 @@
 // Компилятор ищет функцию не только в текущей области видимости,
 // но и в пространствах имён ТИПОВ аргументов.
 #include <iostream>
-#include <utility>  // std::swap
+
+// --- 1. Тип объявлен в namespace — функция ищется там же --------------------
 
 namespace geometry {
 
-struct Point {
-    double x, y;
-};
+// Перечисление объявлено внутри geometry, поэтому его namespace — geometry.
+enum Shape { Circle, Square, Triangle };
 
-// Функция в том же namespace, что и Point.
-void print(const Point& p) {
-    std::cout << "(" << p.x << ", " << p.y << ")";
+// Функция в том же namespace, что и Shape.
+const char* describe(Shape s) {
+    switch (s) {
+        case Circle:   return "круг";
+        case Square:   return "квадрат";
+        case Triangle: return "треугольник";
+    }
+    return "неизвестно";
 }
 
-// operator<< в том же namespace, что и Point.
-std::ostream& operator<<(std::ostream& os, const Point& p) {
-    return os << "(" << p.x << ", " << p.y << ")";
+int sides(Shape s) {
+    switch (s) {
+        case Circle:   return 0;
+        case Square:   return 4;
+        case Triangle: return 3;
+    }
+    return -1;
 }
 
 }  // namespace geometry
 
-namespace my {
+// --- 2. Одноимённые функции в разных namespace ------------------------------
 
-struct Widget {
-    int id;
-};
+// Есть ещё один describe — и он не конфликтует с geometry::describe:
+// ADL выбирает функцию по namespace ТИПА аргумента.
+namespace physics {
 
-// Специализированный swap для Widget — должен быть найден через ADL.
-void swap(Widget& a, Widget& b) {
-    std::cout << "  my::swap для Widget\n";
-    std::swap(a.id, b.id);
+enum Unit { Meter, Second };
+
+const char* describe(Unit u) {
+    return u == Meter ? "метр" : "секунда";
 }
 
-}  // namespace my
+}  // namespace physics
 
-// Идиома "using std::swap; swap(a, b);": ADL найдёт my::swap для my::Widget.
-template <typename T>
-void swap_two(T& a, T& b) {
-    using std::swap;  // делаем std::swap кандидатом
-    swap(a, b);       // ADL предпочтёт my::swap, если он есть
-}
+
 
 int main() {
-    geometry::Point p{3.0, 4.0};
+    // ADL находит geometry::describe, хотя мы не написали geometry::
+    std::cout << "describe(Circle)       -> " << describe(geometry::Circle) << '\n';
+    std::cout << "sides(Square)          -> " << sides(geometry::Square) << '\n';
 
-    // ADL находит geometry::print, хотя мы не писали geometry::
-    std::cout << "print(p) -> ";
-    print(p);
-    std::cout << '\n';
+    // Имя describe одно и то же, но ADL выбирает функцию по типу аргумента.
+    std::cout << "describe(Meter)        -> " << describe(physics::Meter) << '\n';
 
-    // ADL находит geometry::operator<< — поэтому это просто работает.
-    std::cout << "cout << p -> " << p << '\n';
-
-    // Идиома swap: ADL выбирает специализированный my::swap.
-    my::Widget w1{1}, w2{2};
-    std::cout << "swap_two(Widget): ";
-    swap_two(w1, w2);
-    std::cout << "  после: " << w1.id << ", " << w2.id << '\n';  // 2, 1
 
     return 0;
 }

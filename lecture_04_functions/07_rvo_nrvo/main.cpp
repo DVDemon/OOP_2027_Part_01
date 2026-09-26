@@ -34,24 +34,25 @@ Tracker make_named() {
 // Анти-пример: std::move у локальной переменной ЗАПРЕЩАЕТ NRVO
 // и навязывает перемещение. Компилятор сам предупреждает об этом
 // (-Wpessimizing-move) — локально глушим, чтобы показать поведение в выводе.
-#if defined(__clang__)
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wpessimizing-move"
-#elif defined(__GNUC__)
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpessimizing-move"
-#endif
+// #if defined(__clang__)
+// #pragma clang diagnostic push
+// #pragma clang diagnostic ignored "-Wpessimizing-move"
+// #elif defined(__GNUC__)
+// #pragma GCC diagnostic push
+// #pragma GCC diagnostic ignored "-Wpessimizing-move"
+// #endif
 Tracker make_with_move() {
     Tracker t("moved");
     return std::move(t);  // ПЛОХО: вместо NRVO будет перемещение
 }
-#if defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
+// #if defined(__clang__)
+// #pragma clang diagnostic pop
+// #elif defined(__GNUC__)
+// #pragma GCC diagnostic pop
+// #endif
 
 int main() {
+    
     std::cout << "make_prvalue():\n";
     Tracker a = make_prvalue();
 

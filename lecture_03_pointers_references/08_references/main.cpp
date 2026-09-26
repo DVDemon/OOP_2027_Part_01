@@ -3,6 +3,7 @@
 
 // Передача по ссылке: функция меняет оригинал, без копии и без разыменования.
 void increment(int& value) {
+    std::cout << "&value   = " << static_cast<void*>(&value) << '\n';
     ++value;  // меняем сам аргумент
 }
 

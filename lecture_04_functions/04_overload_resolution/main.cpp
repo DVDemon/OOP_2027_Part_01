@@ -7,6 +7,7 @@ void foo(double x) { std::cout << "foo(double): " << x << '\n'; }
 void foo(long x)   { std::cout << "foo(long):   " << x << '\n'; }
 
 int main() {
+    
     // Приоритет преобразований (от лучшего к худшему):
     //   1) точное совпадение
     //   2) promotion (short->int, float->double, bool->int)
