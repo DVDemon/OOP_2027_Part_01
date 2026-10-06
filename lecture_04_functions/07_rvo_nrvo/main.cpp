@@ -43,7 +43,7 @@ Tracker make_named() {
 // #endif
 Tracker make_with_move() {
     Tracker t("moved");
-    return std::move(t);  // ПЛОХО: вместо NRVO будет перемещение
+    return (Tracker&)t;  // ПЛОХО: вместо NRVO будет перемещение
 }
 // #if defined(__clang__)
 // #pragma clang diagnostic pop

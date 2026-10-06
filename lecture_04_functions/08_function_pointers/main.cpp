@@ -33,8 +33,9 @@ int main() {
     // --- std::function: хранит любой вызываемый объект ---
     std::function<int(int, int)> f = add;  // обычная функция
     std::cout << "f(3, 4) = " << f(3, 4) << '\n';  // 7
+    
 
-    f = [](int a, int b) { return a - b; };  // лямбда
+    auto ff = [f](int a, int b) { return a - b; };  // лямбда
     std::cout << "f(10, 3) = " << f(10, 3) << '\n';  // 7
 
     int factor = 10;

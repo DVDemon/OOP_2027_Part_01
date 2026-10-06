@@ -23,8 +23,8 @@ void process(std::string& s) {
     std::cout << "неконстантная версия: " << s << '\n';
 }
 
-void process(const std::string& s) {
-    std::cout << "константная версия:   " << s << '\n';
+void process( const std::string& s) {
+   std::cout << "константная версия:   " << s << '\n';
 }
 
 int main() {

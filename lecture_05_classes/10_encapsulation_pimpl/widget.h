@@ -13,12 +13,12 @@ public:
     // Перемещение поддерживаем, копирование по умолчанию запрещено
     // (unique_ptr некопируем). Move-операции тоже определяем в .cpp.
     Widget(Widget&&) noexcept;
-    Widget& operator=(Widget&&) noexcept;
+    Widget& operator=(Widget&&) = delete;
 
     void doWork();
     int getResult() const;
 
 private:
     struct Impl;                   // forward declaration: тело скрыто в .cpp
-    std::unique_ptr<Impl> pImpl_;  // указатель на реализацию
+    Impl* pImpl_;  // указатель на реализацию
 };

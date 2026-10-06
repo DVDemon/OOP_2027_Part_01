@@ -11,14 +11,19 @@ struct Widget::Impl {
     void compute() { ++counter; }
 };
 
-Widget::Widget() : pImpl_(std::make_unique<Impl>()) {}
+Widget::Widget() : pImpl_(new Impl()) {}
 
 // Деструктор обязан быть здесь: для уничтожения unique_ptr<Impl> нужен полный
 // тип Impl. В заголовке (где Impl неполон) =default привёл бы к ошибке.
-Widget::~Widget() = default;
+Widget::~Widget() {
+    delete pImpl_;
+}
 
-Widget::Widget(Widget&&) noexcept = default;
-Widget& Widget::operator=(Widget&&) noexcept = default;
+Widget::Widget(Widget&& other) noexcept{
+ pImpl_ = other.pImpl_;
+ other.pImpl_ = nullptr;
+}
+
 
 void Widget::doWork() {
     pImpl_->compute();

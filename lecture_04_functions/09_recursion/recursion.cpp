@@ -14,12 +14,12 @@ long long factorial_tail(int n, long long acc) {
 }
 
 bool is_even(unsigned n) {
-    if (n == 1) return false;
+    if (n == 0) return true;
     return is_odd(n - 1);
 }
 
 bool is_odd(unsigned n) {
-    if (n == 1) return true;
+    if (n == 0) return false;
     return is_even(n - 1);
 }
 

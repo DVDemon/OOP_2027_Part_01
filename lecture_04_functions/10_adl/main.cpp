@@ -46,6 +46,10 @@ const char* describe(Unit u) {
 }  // namespace physics
 
 
+const char* describe(physics::Unit u) {
+    return u == physics::Meter ? "сам ты метр" : "и секунда";
+}
+
 
 int main() {
     // ADL находит geometry::describe, хотя мы не написали geometry::
@@ -53,7 +57,7 @@ int main() {
     std::cout << "sides(Square)          -> " << sides(geometry::Square) << '\n';
 
     // Имя describe одно и то же, но ADL выбирает функцию по типу аргумента.
-    std::cout << "describe(Meter)        -> " << describe(physics::Meter) << '\n';
+    std::cout << "describe(Meter)        -> " << physics::describe(physics::Meter) << '\n';
 
 
     return 0;
