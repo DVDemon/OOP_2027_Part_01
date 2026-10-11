@@ -26,6 +26,7 @@ cmake --build build
 ./build/08_object_lifetime
 ./build/09_singleton
 ./build/10_rule_of_five
+./build/11_copy_move_operators
 ```
 
 ## Примеры
@@ -42,6 +43,7 @@ cmake --build build
 | [`08_object_lifetime`](08_object_lifetime) | 8 | Автоматическое, динамическое, статическое время жизни, временные |
 | [`09_singleton`](09_singleton) | 9 | Singleton через Magic Statics |
 | [`10_rule_of_five`](10_rule_of_five) | 10 | `DynamicArray`: глубокая копия, правило пяти |
+| [`11_copy_move_operators`](11_copy_move_operators) | 10+ | Перегрузка копирующих/перемещающих операторов и конструкторов |
 
 ## Ключевые идеи лекции
 

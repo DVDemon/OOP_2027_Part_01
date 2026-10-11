@@ -11,10 +11,16 @@ class Logger {
 
     std::string name_;  // нестатическое поле — у каждого объекта своё
 
-public:
-    explicit Logger(std::string name) : name_(std::move(name)) {
+    Logger(std::string name) : name_(std::move(name)) {
         ++instance_count_;  // меняем общее статическое поле
     }
+
+public:
+    static Logger create(std::string name) {
+        static Logger _instance(name);
+        return _instance;
+    }
+
 
     ~Logger() { --instance_count_; }
 
@@ -30,23 +36,26 @@ public:
 };
 
 int main() {
-    // Статический метод вызывается через имя класса, без объекта.
-    std::cout << "экземпляров в начале: " << Logger::getInstanceCount() << '\n';
 
-    Logger a{"net"};
-    Logger b{"db"};
-    std::cout << "экземпляров: " << Logger::getInstanceCount() << '\n';  // 2
+    std::cout << "Loggers:" << Logger::getInstanceCount() << '\n';
+    // Статический метод вызывается через имя класса, без объекта.
+    // std::cout << "экземпляров в начале: " << Logger::getInstanceCount() << '\n';
+
+    Logger a = Logger::create("net");
+    Logger b = Logger::create("db");
+    std::cout << "экземпляров: " << b.getInstanceCount() << '\n';  // 2
+    std::cout << "экземпляров: " << a.getInstanceCount() << '\n';  // 2
 
     a.log("connecting");
-    Logger::setPrefix("[APP]");  // меняем общий префикс для ВСЕХ объектов
+    // Logger::setPrefix("[APP]");  // меняем общий префикс для ВСЕХ объектов
     b.log("query");              // увидим новый префикс
 
-    {
-        Logger tmp{"temp"};
-        std::cout << "внутри блока: " << Logger::getInstanceCount() << '\n';  // 3
-    }  // tmp уничтожен -> счётчик уменьшится
+    // {
+    //     Logger tmp{"temp"};
+    //     std::cout << "внутри блока: " << Logger::getInstanceCount() << '\n';  // 3
+    // }  // tmp уничтожен -> счётчик уменьшится
 
-    std::cout << "после блока: " << Logger::getInstanceCount() << '\n';  // 2
+    // std::cout << "после блока: " << Logger::getInstanceCount() << '\n';  // 2
 
     return 0;
 }

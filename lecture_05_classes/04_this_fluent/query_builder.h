@@ -24,7 +24,11 @@ public:
     }
 
     QueryBuilder& limit(int n) {
-        limit_ = n;
+        this->limit_ = n;
+        (*this).limit_ = n;
+
+       // this = nullptr;
+
         return *this;
     }
 

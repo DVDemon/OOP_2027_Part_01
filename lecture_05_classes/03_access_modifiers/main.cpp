@@ -30,6 +30,7 @@ private:
 // Наследник имеет доступ к protected-методу setOwner, но НЕ к private-полям напрямую.
 class AdminAccount : public Account {
 public:
+
     AdminAccount(std::string owner, double balance) : Account(std::move(owner), balance) {}
 
     void rename(const std::string& name) {

@@ -30,12 +30,17 @@ add_lecture_example(01_constructor_kinds        01_constructor_kinds/main.cpp)
 add_lecture_example(02_member_init_list         02_member_init_list/main.cpp)
 add_lecture_example(03_delegating_constructors  03_delegating_constructors/main.cpp)
 add_lecture_example(04_explicit                 04_explicit/main.cpp)
-add_lecture_example(05_default_delete           05_default_delete/main.cpp)
-add_lecture_example(06_destructors_order        06_destructors_order/main.cpp)
-add_lecture_example(07_raii                     07_raii/main.cpp
-                                                07_raii/timer.cpp)
-add_lecture_example(08_object_lifetime          08_object_lifetime/main.cpp)
-add_lecture_example(09_singleton                09_singleton/main.cpp)
-add_lecture_example(10_rule_of_five             10_rule_of_five/main.cpp
-                                                10_rule_of_five/dynamic_array.cpp)
-target_include_directories(10_rule_of_five PRIVATE 10_rule_of_five)
+add_lecture_example(05_copy_move_operators      05_copy_move_operators/main.cpp
+                                                05_copy_move_operators/tracked_buffer.cpp)
+target_include_directories(05_copy_move_operators PRIVATE 05_copy_move_operators)
+add_lecture_example(06_default_delete           06_default_delete/main.cpp)
+add_lecture_example(07_destructors_order        07_destructors_order/main.cpp)
+add_lecture_example(08_raii                     08_raii/main.cpp
+                                                08_raii/timer.cpp)
+add_lecture_example(09_object_lifetime          09_object_lifetime/main.cpp)
+add_lecture_example(10_singleton                10_singleton/main.cpp)
+add_lecture_example(11_rule_of_five             11_rule_of_five/main.cpp
+                                                11_rule_of_five/dynamic_array.cpp)
+target_include_directories(11_rule_of_five PRIVATE 11_rule_of_five)
+
+

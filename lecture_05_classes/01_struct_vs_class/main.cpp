@@ -9,12 +9,21 @@ struct Point {
 
 // class: члены по умолчанию private — поля скрыты, доступ только через методы.
 class PointClass {
-    double x;  // private по умолчанию
-    double y;  // private по умолчанию
+
+    double x{0};  // private по умолчанию
+    double y{0};  // private по умолчанию
+    void foo() {}
 public:
     PointClass(double x_, double y_) : x(x_), y(y_) {}
-    double getX() const { return x; }
+    double getX() const{
+        return x; 
+    }
+
     double getY() const { return y; }
+
+    void boo() {
+        foo();
+    }
 };
 
 // Доказательство, что отличие ТОЛЬКО в доступе по умолчанию:
@@ -24,23 +33,22 @@ private:               // явно закрываем поле
     int value_ = 0;
 public:
     void inc() { ++value_; }
-    int get() const { return value_; }
+    const int& get() { return value_; }
 };
 
 int main() {
     // struct Point: к полям обращаемся напрямую.
-    Point p{3.0, 4.0};
-    std::cout << "Point (struct): x=" << p.x << " y=" << p.y << '\n';
+    // const Point p{3.0, 4.0};
+    // std::cout << "Point (struct): x=" << p.x << " y=" << p.y << '\n';
 
-    // class PointClass: поля закрыты, читаем через геттеры.
-    PointClass pc{3.0, 4.0};
-    std::cout << "PointClass (class): x=" << pc.getX() << " y=" << pc.getY() << '\n';
-    // pc.x = 1.0;  // ОШИБКА компиляции: 'x' is private
+    // // class PointClass: поля закрыты, читаем через геттеры.
+    // const PointClass pc{3.0, 4.0};
+    // std::cout << "PointClass (class): x=" << pc.getX() << " y=" << pc.getY() << '\n';
+    // std::cout << "Sizeof p:" << sizeof(pc) << '\n';
+    // // pc.x = 1.0;  // ОШИБКА компиляции: 'x' is private
 
     // struct с явным private ведёт себя как class.
     Counter c;
-    c.inc();
-    c.inc();
     std::cout << "Counter (struct + private): " << c.get() << '\n';
 
     return 0;

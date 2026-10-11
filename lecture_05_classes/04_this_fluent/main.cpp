@@ -11,6 +11,10 @@ int main() {
                                 .limit(10)
                                 .build();
 
+    // sql::QueryBuilder a = sql::QueryBuilder{};
+    // a.from("users");
+    // a.where("age > 18");
+    // a.limit(10);
     std::cout << sql << '\n';
     // ожидаем: SELECT * FROM users WHERE age > 18 LIMIT 10
 
