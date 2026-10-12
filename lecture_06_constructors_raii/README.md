@@ -20,30 +20,14 @@ cmake --build build
 ./build/02_member_init_list
 ./build/03_delegating_constructors
 ./build/04_explicit
-./build/05_default_delete
-./build/06_destructors_order
-./build/07_raii
-./build/08_object_lifetime
+./build/05_copy_move_operators
+./build/06_default_delete
+./build/07_destructors_order
+./build/08_raii
 ./build/09_singleton
 ./build/10_rule_of_five
-./build/11_copy_move_operators
+
 ```
-
-## Примеры
-
-| Папка | Пункт плана | О чём |
-|-------|-------------|-------|
-| [`01_constructor_kinds`](01_constructor_kinds) | 1 | По умолчанию, параметризованный, копирующий, конвертирующий |
-| [`02_member_init_list`](02_member_init_list) | 2 | MIL: `const`/ссылки, порядок инициализации по объявлению |
-| [`03_delegating_constructors`](03_delegating_constructors) | 3 | Делегирующие конструкторы — устранение дублирования |
-| [`04_explicit`](04_explicit) | 4 | `explicit`: запрет неявных преобразований |
-| [`05_default_delete`](05_default_delete) | 5 | `=default`, `=delete` и автогенерация спец-методов |
-| [`06_destructors_order`](06_destructors_order) | 6 | Деструкторы, обратный порядок уничтожения |
-| [`07_raii`](07_raii) | 7 | Идиома RAII: ресурс в конструкторе/деструкторе |
-| [`08_object_lifetime`](08_object_lifetime) | 8 | Автоматическое, динамическое, статическое время жизни, временные |
-| [`09_singleton`](09_singleton) | 9 | Singleton через Magic Statics |
-| [`10_rule_of_five`](10_rule_of_five) | 10 | `DynamicArray`: глубокая копия, правило пяти |
-| [`11_copy_move_operators`](11_copy_move_operators) | 10+ | Перегрузка копирующих/перемещающих операторов и конструкторов |
 
 ## Ключевые идеи лекции
 
@@ -56,3 +40,4 @@ cmake --build build
 7. **Деструкторы вызываются в обратном порядке**: поля — обратно объявлению, локальные объекты — обратно созданию.
 8. **Magic Statics (C++11)** делают ленивую инициализацию локальной `static`-переменной потокобезопасной — основа простого Singleton.
 9. **Правило пяти**: если класс управляет ресурсом, продумайте все пять специальных методов (тема следующей лекции).
+10. Перегрузка операторов копирования и перемещения.

@@ -10,8 +10,10 @@
 //   - конструктор из initializer_list;
 //   - делегирующий конструктор (count, value);
 //   - копирующий конструктор (глубокая копия);
+//   - перемещающий конструктор (перенос владения, noexcept);
 //   - деструктор;
-//   - перемещение пока удалено (=delete) — реализация в следующей лекции.
+//   - оператор присваивания через идиому copy-and-swap (обрабатывает
+//     и копирование, и перемещение — отдельный move-assignment не нужен).
 class DynamicArray {
     int* data_;
     std::size_t size_;
@@ -36,11 +38,19 @@ public:
     // Деструктор — освобождает new[].
     ~DynamicArray();
 
-    // Перемещение пока запрещаем (тема следующей лекции — правило пяти).
-    DynamicArray(DynamicArray&&) = delete;
-    DynamicArray& operator=(DynamicArray&&) = delete;
-    // Присваивание копированием тоже отложим (нужно правило пяти целиком).
-    DynamicArray& operator=(const DynamicArray&) = delete;
+    // Конструктор перемещения — забирает ресурсы из source.
+    DynamicArray(DynamicArray&& other) noexcept;
+
+    // Обменивает содержимое с other за O(1) без исключений.
+    // Основа copy-and-swap: обмен «сырыми» ресурсами, а не копирование.
+    void swap(DynamicArray& other) noexcept;
+
+    // Оператор присваивания (copy-and-swap).
+    DynamicArray& operator=(DynamicArray other);
+
+    // Или два отдельных оператора
+    // DynamicArray& operator=(const DynamicArray& other);
+    // DynamicArray& operator=(DynamicArray&& other) noexcept;
 
     void push_back(int value);
 
@@ -54,3 +64,7 @@ public:
     int operator[](std::size_t index) const { return data_[index]; }
     int& operator[](std::size_t index) { return data_[index]; }
 };
+
+// Свободный swap для ADL: позволяет generic-коду и идиоме copy-and-swap
+// находить обмен без приведения к std::swap над целыми объектами.
+void swap(DynamicArray& a, DynamicArray& b) noexcept;
