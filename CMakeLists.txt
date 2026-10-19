@@ -21,8 +21,7 @@ set(LECTURES
     lecture_04_functions
     lecture_05_classes
     lecture_06_constructors_raii
-    lecture_07_copy_move
-    lecture_08_operators
+    lecture_07_operators
     lecture_09_inheritance
     lecture_10_polymorphism
     lecture_11_multiple_inheritance
