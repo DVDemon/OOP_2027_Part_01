@@ -9,7 +9,7 @@
 5. Операторы ввода/вывода (`<<`, `>>`)
 6. Оператор индексирования `[]` (const/non-const)
 7. Оператор вызова `()` — функторы
-8. Оператор `->` (proxy-объекты)
+8. Операторы `*` и `->` (proxy-объекты)
 9. Операторы преобразования типа (`operator T()`), `explicit` conversions
 10. Пользовательские литералы и канонические формы
 
@@ -400,58 +400,116 @@ public:
 
 ---
 
-## 8. Оператор `->` — proxy-объекты
+## 8. Операторы `*` и `->` — proxy-объекты
 
-`operator->` должен возвращать либо указатель, либо объект, у которого тоже есть `operator->` (цепочка).
+Оба оператора перегружаются **только как методы класса**.
 
-```cpp
-template <typename T>
-class SmartPtr {
-    T* ptr_;
-public:
-    explicit SmartPtr(T* p = nullptr) : ptr_(p) {}
-    ~SmartPtr() { delete ptr_; }
+* `operator*` возвращает сам объект — обычно ссылку, чтобы `*p` было
+  lvalue и ему можно было присваивать.
+* `operator->` должен возвращать либо указатель, либо объект, у которого
+  тоже есть `operator->`; компилятор повторяет `->` по цепочке, пока не
+  дойдёт до настоящего указателя.
 
-    T& operator*() const { return *ptr_; }
-    T* operator->() const { return ptr_; }
-
-    SmartPtr(const SmartPtr&) = delete;
-    SmartPtr& operator=(const SmartPtr&) = delete;
-};
-
-// struct Widget { void doWork() {} };
-// SmartPtr<Widget> p(new Widget);
-// p->doWork(); // вызов через operator->
-```
-
-Пример proxy для логирования:
+Классический умный указатель:
 
 ```cpp
-template <typename T>
-class LoggingProxy {
-    T* ptr_;
+class Widget {
+    int id_;
 public:
-    LoggingProxy(T* p) : ptr_(p) {
-        std::cout << "Access start\n";
+    explicit Widget(int id) : id_(id) {}
+    int id() const { return id_; }
+    void hello() const {
+        std::cout << "Widget #" << id_ << " says hello\n";
     }
-    ~LoggingProxy() {
-        std::cout << "Access end\n";
-    }
-    T* operator->() { return ptr_; }
 };
 
-template <typename T>
-class LoggingWrapper {
-    T obj_;
+class WidgetPtr {
+    Widget* ptr_;
 public:
-    template <typename... Args>
-    LoggingWrapper(Args&&... args) : obj_(std::forward<Args>(args)...) {}
+    explicit WidgetPtr(Widget* p = nullptr) : ptr_(p) {}
+    ~WidgetPtr() { delete ptr_; }
 
-    LoggingProxy<T> operator->() {
-        return LoggingProxy<T>(&obj_);
-    }
+    WidgetPtr(const WidgetPtr&) = delete;
+    WidgetPtr& operator=(const WidgetPtr&) = delete;
+
+    // *p — сам объект (lvalue): можно читать и присваивать
+    Widget& operator*() { return *ptr_; }
+    const Widget& operator*() const { return *ptr_; }
+
+    // p->member раскрывается в ptr_->member
+    Widget* operator->() { return ptr_; }
+    const Widget* operator->() const { return ptr_; }
 };
+
+// WidgetPtr p(new Widget(1));
+// p->hello();      // (p.operator->())->hello()
+// (*p).hello();    // (p.operator*()).hello()
+// *p = Widget(10); // operator* вернул Widget& — присваивание работает
 ```
+
+const-перегрузки возвращают `const Widget&` / `const Widget*`: через
+const-указатель сам объект менять нельзя.
+
+### Proxy в `operator->`
+
+`operator->` может вернуть не указатель, а временный объект-прокси со
+своим `operator->`. Компилятор «прокрутит» цепочку до `Widget*`:
+
+```cpp
+class ArrowProxy {
+    Widget* ptr_;
+public:
+    explicit ArrowProxy(Widget* p) : ptr_(p) {
+        std::cout << "[->] доступ начат\n";
+    }
+    ~ArrowProxy() {
+        std::cout << "[->] доступ завершён\n";
+    }
+    Widget* operator->() const { return ptr_; }
+};
+
+class LoggingWidget {
+    Widget obj_;
+public:
+    explicit LoggingWidget(int id) : obj_(id) {}
+
+    ArrowProxy operator->() { return ArrowProxy(&obj_); }
+};
+
+// LoggingWidget w(2);
+// w->hello(); // w.operator->().operator->()->hello()
+```
+
+Временный прокси живёт до конца полного выражения, поэтому его
+деструктор срабатывает уже после вызова метода — даже если метод
+бросит исключение.
+
+### Proxy в `operator*`
+
+`operator*` тоже может вернуть прокси. Чтобы он вёл себя как `Widget`,
+определяем неявное преобразование в ссылку:
+
+```cpp
+class DerefProxy {
+    Widget& ref_;
+public:
+    explicit DerefProxy(Widget& r) : ref_(r) {
+        std::cout << "[*] доступ начат\n";
+    }
+    ~DerefProxy() {
+        std::cout << "[*] доступ завершён\n";
+    }
+    operator Widget&() const { return ref_; }
+};
+
+// void print(const Widget&);
+// print(*w); // DerefProxy -> Widget& -> print(const Widget&)
+```
+
+В примере `LoggingWidget` определяет оба оператора — и `*`, и `->`.
+
+Пример:
+- [08_arrow_proxy](08_arrow_proxy)
 
 ---
 
@@ -545,7 +603,8 @@ auto s = "Hello"s; // std::string, а не const char*
 | `>>` | `friend istream& operator>>(istream&, T&)` | `istream&` | Свободная |
 | `[]` | `T& operator[](size_t)` + const-версия | `T&`/`const T&` | Метод |
 | `()` | `R operator()(Args...) const` | `R` | Метод |
-| `->` | `T* operator->()` | `T*` | Метод |
+| `*` | `T& operator*()` + const-версия | `T&`/`const T&` | Метод |
+| `->` | `T* operator->()` | `T*` или прокси с `operator->` | Метод |
 | `=` (copy) | `T& operator=(T)` или `T& operator=(const T&)` | `T&` | Метод |
 | `bool` | `explicit operator bool() const` | `bool` | Метод |
 
@@ -563,6 +622,7 @@ auto s = "Hello"s; // std::string, а не const char*
 | Pre/Post increment | Пре — ссылка, пост — копия + int-заглушка |
 | `operator<=>` | Один оператор заменяет шесть (C++20) |
 | Функторы | Объекты с `operator()`, совместимы с алгоритмами STL |
+| `operator->` | Возвращает указатель или прокси; цепочка `->` раскрывается компилятором |
 | `explicit operator T()` | Запрет неявных опасных преобразований |
 | Пользовательские литералы | Расширение синтаксиса для выразительности |
 
@@ -589,7 +649,8 @@ auto s = "Hello"s; // std::string, а не const char*
 5. Почему `operator<<` не может быть методом класса?
 6. Зачем нужны две версии `operator[]` (const и non-const)?
 7. В чём преимущество функтора перед указателем на функцию?
-8. Почему `operator bool()` должен быть `explicit`?
+8. Почему `operator*` обычно возвращает ссылку, а `operator->` — указатель или прокси?
+9. Почему `operator bool()` должен быть `explicit`?
 
 ---
 

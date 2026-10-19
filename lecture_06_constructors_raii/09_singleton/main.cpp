@@ -7,7 +7,7 @@ class Database {
 public:
     // Magic Static: ленивая, потокобезопасная инициализация (C++11).
     static Database& getInstance() {
-        static Database instance;  // создаётся при первом вызове
+        Database instance;  // создаётся при первом вызове
         return instance;
     }
 

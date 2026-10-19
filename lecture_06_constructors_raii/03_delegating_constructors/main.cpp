@@ -35,9 +35,9 @@ int main() {
     Connection c3("api.local");                // -> (host, 80, false)
     Connection c4;                             // -> ("localhost", 80, false)
 
-    (void)c1;
-    (void)c2;
-    (void)c3;
-    (void)c4;
+    // (void)c1;
+    // (void)c2;
+    // (void)c3;
+    // (void)c4;
     return 0;
 }

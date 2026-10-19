@@ -7,7 +7,7 @@
 #include <string>
 
 class Point {
-    double x_;
+    const double x_ {23};
     double y_;
 
 public:
@@ -65,7 +65,8 @@ int main() {
     std::cout << "p4 = (" << p4.x() << ", " << p4.y() << ")\n";
 
     std::cout << "--- конвертирующий ---\n";
-    describe(36.6);  // неявная конверсия double -> Temperature
+    double ddd{36.6};
+    describe(ddd);  // неявная конверсия double -> Temperature
     Temperature t = 20.0;  // copy-initialization тоже разрешена (без explicit)
     std::cout << "t = " << t.celsius() << " C\n";
 
