@@ -22,13 +22,14 @@ set(LECTURES
     lecture_05_classes
     lecture_06_constructors_raii
     lecture_07_operators
-    lecture_09_inheritance
-    lecture_10_polymorphism
-    lecture_11_multiple_inheritance
+    lecture_08_inheritance
+    lecture_09_polymorphism
+    lecture_10_move_semantics
+    lecture_11_smart_pointers
     lecture_12_exceptions
-    lecture_13_smart_pointers
+    lecture_13_stl
     lecture_14_solid
-    lecture_15_stl
+    lecture_15_templates
     lecture_16_poco_http
 )
 

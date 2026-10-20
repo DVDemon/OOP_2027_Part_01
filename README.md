@@ -99,13 +99,13 @@ cmake -S . -B build -DLECTURE_BUILD_TESTS=ON
 | 4 | Функции: перегрузка, параметры, inline, RVO | `lecture_04_functions` |
 | 5 | Классы: поля, методы, инкапсуляция | `lecture_05_classes` |
 | 6 | Конструкторы, деструкторы, RAII | `lecture_06_constructors_raii` |
-| 7 | Copy/Move семантика. Правило пяти | `lecture_07_copy_move` |
-| 8 | Перегрузка операторов | `lecture_08_operators` |
-| 9 | Наследование | `lecture_09_inheritance` |
-| 10 | Виртуальные функции и полиморфизм | `lecture_10_polymorphism` |
-| 11 | Множественное и виртуальное наследование | `lecture_11_multiple_inheritance` |
+| 7 | Перегрузка операторов | `lecture_07_operators` |
+| 8 | Наследование: одиночное, множественное, виртуальное | `lecture_08_inheritance` |
+| 9 | Виртуальные функции и полиморфизм | `lecture_09_polymorphism` |
+| 10 | Copy/Move семантика. Правило пяти | `lecture_10_move_semantics` |
+| 11 | Умные указатели | `lecture_11_smart_pointers` |
 | 12 | Обработка исключений. Гарантии безопасности | `lecture_12_exceptions` |
-| 13 | Умные указатели | `lecture_13_smart_pointers` |
+| 13 | STL: контейнеры, итераторы, алгоритмы | `lecture_13_stl` |
 | 14 | Принципы SOLID | `lecture_14_solid` |
-| 15 | STL: контейнеры, итераторы, алгоритмы | `lecture_15_stl` |
+| 15 | Основы шаблонов: функции и классы | `lecture_15_templates` |
 | 16 | POCO: HTTP-сервер, архитектура фреймворка | `lecture_16_poco_http` |
