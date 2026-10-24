@@ -2,23 +2,47 @@
 
 namespace stk {
 
-void Stack::push(int value) {
+// --- StackPrivate: приватное наследование ---------------------------------
+
+void StackPrivate::push(int value) {
+    push_back(value);  // доступно, потому что член vector стал private-членом
+}
+
+void StackPrivate::pop() {
+    pop_back();
+}
+
+int StackPrivate::top() const {
+    return back();
+}
+
+bool StackPrivate::empty() const noexcept {
+    return std::vector<int>::empty();
+}
+
+std::size_t StackPrivate::size() const noexcept {
+    return std::vector<int>::size();
+}
+
+// --- StackComposed: композиция --------------------------------------------
+
+void StackComposed::push(int value) {
     data_.push_back(value);
 }
 
-void Stack::pop() {
+void StackComposed::pop() {
     data_.pop_back();
 }
 
-int Stack::top() const {
+int StackComposed::top() const {
     return data_.back();
 }
 
-bool Stack::empty() const noexcept {
+bool StackComposed::empty() const noexcept {
     return data_.empty();
 }
 
-std::size_t Stack::size() const noexcept {
+std::size_t StackComposed::size() const noexcept {
     return data_.size();
 }
 

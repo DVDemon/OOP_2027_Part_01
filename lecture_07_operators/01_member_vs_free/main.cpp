@@ -6,7 +6,9 @@ class Fraction {
     int num_;  // числитель
     int den_;  // знаменатель
 public:
-    Fraction(int n = 0, int d = 1) : num_(n), den_(d) {}
+    Fraction(int n = 0, int d = 1) : num_(n), den_(d) {
+        std::cout << "ctor:" << n << "," << d << std::endl;
+    }
 
     // --- Оператор как МЕТОД: левый операнд всегда Fraction ---
     // Подходит, когда левый операнд по смыслу не нуждается в преобразовании.
@@ -26,6 +28,7 @@ public:
         return os << f.num_ << '/' << f.den_;
     }
 };
+
 
 int main() {
     Fraction half(1, 2);

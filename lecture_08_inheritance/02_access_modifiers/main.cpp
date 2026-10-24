@@ -1,4 +1,11 @@
 // Пример 02: модификаторы наследования public / protected / private.
+//
+// Демонстрирует таблицу доступа:
+//   * public-наследование сохраняет уровни доступа базы;
+//   * protected-наследование делает public-члены базы protected;
+//   * private-наследование делает public/protected-члены private;
+//   * private-члены базы недоступны наследнику ни при каком модификаторе.
+
 #include <iostream>
 
 class Base {

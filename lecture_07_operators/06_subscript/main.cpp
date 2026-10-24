@@ -17,14 +17,17 @@ int main() {
     Matrix m(2, 3);
 
     // non-const operator[] -> Row -> запись.
-    m[0][0] = 1.0;
-    m[0][2] = 2.0;
-    m[1][1] = 3.0;
+
+    Matrix::Row my_row = m[0];
+    my_row(2) = 2;
+
+    m[0](2) = 2.0;
+    m[1](1) = 3.0;
 
     std::cout << "Матрица:\n";
     print(m);   // здесь работает const-версия
 
-    std::cout << "m[1][1] = " << m[1][1] << '\n';
+    std::cout << "m[1][1] = " << m[1](1) << '\n';
 
     return 0;
 }

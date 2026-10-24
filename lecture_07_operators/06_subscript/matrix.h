@@ -25,7 +25,7 @@ public:
         std::size_t cols_;
     public:
         Row(double* d, std::size_t c) : data_(d), cols_(c) {}
-        double& operator[](std::size_t j) {
+        double& operator()(std::size_t j) {
             if (j >= cols_) throw std::out_of_range("column index");
             return data_[j];
         }

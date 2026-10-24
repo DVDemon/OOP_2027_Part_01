@@ -1,22 +1,29 @@
 // Пример 03: порядок конструирования и разрушения объектов.
+//
+// Демонстрирует:
+//   * при создании: конструктор базы -> члены базы -> члены наследника -> тело;
+//   * при разрушении: строго обратный порядок;
+//   * что порядок задаёт список баз и объявление полей, а не список инициализации.
+
 #include <iostream>
 #include <string>
+#include <utility>
 
 // Вспомогательный член, печатающий своё создание/уничтожение.
 class Member {
-    std::string tag;
+    std::string tag_;
 
 public:
-    explicit Member(std::string t) : tag(std::move(t)) {
-        std::cout << "  Member(" << tag << ")\n";
+    explicit Member(std::string tag) : tag_(std::move(tag)) {
+        std::cout << "  Member(" << tag_ << ")\n";
     }
     ~Member() {
-        std::cout << "  ~Member(" << tag << ")\n";
+        std::cout << "  ~Member(" << tag_ << ")\n";
     }
 };
 
 class Base {
-    Member m{"Base::m"};
+    Member m_{"Base::m"};
 
 public:
     Base() { std::cout << "Base()\n"; }
@@ -24,7 +31,7 @@ public:
 };
 
 class Derived : public Base {
-    Member m{"Derived::m"};
+    Member m_{"Derived::m"};
 
 public:
     Derived() { std::cout << "Derived()\n"; }
@@ -40,7 +47,8 @@ int main() {
     std::cout << "=== область видимости покинута ===\n";
 
     // Ожидаемый порядок:
-    // 1) конструктор базы (и её члены), затем члены наследника, затем тело Derived();
-    // 2) разрушение — строго в обратном порядке.
+    //   Member(Base::m) -> Base() -> Member(Derived::m) -> Derived()
+    // Разрушение — строго наоборот:
+    //   ~Derived() -> ~Member(Derived::m) -> ~Base() -> ~Member(Base::m)
     return 0;
 }
