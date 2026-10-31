@@ -21,7 +21,7 @@ int main() {
     std::vector<int> data{5, 2, 8, 1, 9, 3};
 
     draw::Sorter sorter;
-    sorter.setStrategy(std::make_unique<draw::BubbleSort>());
+    sorter.setStrategy(new draw::BubbleSort());
     std::cout << "  стратегия: " << sorter.strategyName() << '\n';
     {
         std::vector<int> copy = data;
@@ -32,7 +32,7 @@ int main() {
     }
 
     // Меняем стратегию на лету.
-    sorter.setStrategy(std::make_unique<draw::StdSort>());
+    sorter.setStrategy(new draw::StdSort());
     std::cout << "  стратегия: " << sorter.strategyName() << '\n';
     {
         std::vector<int> copy = data;

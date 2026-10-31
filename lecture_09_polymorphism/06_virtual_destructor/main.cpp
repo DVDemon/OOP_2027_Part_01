@@ -31,12 +31,7 @@ int main() {
         delete ptr;  // виртуальный ~Base => вызовется ~Derived, затем ~Base
     }
 
-    std::cout << "\nТо же через unique_ptr<Base> (рекомендуемый способ):\n";
-    {
-        std::unique_ptr<Base> ptr = std::make_unique<Derived>();
-        ptr->use();
-        // деструктор сработает автоматически и полиморфно
-    }
+
 
     return 0;
 }

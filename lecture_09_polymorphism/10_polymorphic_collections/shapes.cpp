@@ -16,17 +16,17 @@ std::string Circle::name() const { return "Circle"; }
 double Rectangle::area() const { return w_ * h_; }
 std::string Rectangle::name() const { return "Rectangle"; }
 
-std::unique_ptr<Shape> createShape(const std::string& type, double a, double b) {
+Shape* createShape(const std::string& type, double a, double b) {
     if (type == "circle") {
-        return std::make_unique<Circle>(a);
+        return new Circle(a);
     }
     if (type == "rectangle") {
-        return std::make_unique<Rectangle>(a, b);
+        return new Rectangle(a, b);
     }
     throw std::invalid_argument("Неизвестный тип фигуры: " + type);
 }
 
-void Canvas::add(std::unique_ptr<Shape> s) {
+void Canvas::add(Shape* s) {
     shapes_.push_back(std::move(s));
 }
 

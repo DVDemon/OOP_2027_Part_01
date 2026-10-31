@@ -33,16 +33,20 @@ public:
 
 // --- Паттерн Factory Method ---
 // Инкапсулирует создание объектов: клиент не знает конкретные классы.
-std::unique_ptr<Shape> createShape(const std::string& type, double a, double b = 0.0);
+Shape* createShape(const std::string& type, double a, double b = 0.0);
 
 // --- Полиморфная коллекция ---
 // Хранит фигуры через unique_ptr<Shape> — без срезки, с владением.
 class Canvas {
-    std::vector<std::unique_ptr<Shape>> shapes_;
+    std::vector<Shape*> shapes_;
 public:
-    void add(std::unique_ptr<Shape> s);
+    void add(Shape* s);
     double totalArea() const;
     std::size_t count() const { return shapes_.size(); }
+    ~Canvas() {
+        for(Shape* ptr: shapes_)
+            delete ptr;
+    }
 };
 
 // --- Паттерн Strategy ---
@@ -68,11 +72,17 @@ public:
 
 // Контекст, использующий стратегию (можно менять алгоритм в runtime).
 class Sorter {
-    std::unique_ptr<SortStrategy> strategy_;
+    SortStrategy* strategy_ {nullptr};
 public:
-    void setStrategy(std::unique_ptr<SortStrategy> s) { strategy_ = std::move(s); }
+    void setStrategy(SortStrategy* s) { 
+        if (strategy_) delete strategy_;
+        strategy_ = std::move(s); 
+    }
     std::string strategyName() const;
     void run(std::vector<int>& data) const;
+    ~Sorter() {
+        delete strategy_;
+    }
 };
 
 }  // namespace draw

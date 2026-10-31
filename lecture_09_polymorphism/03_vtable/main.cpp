@@ -6,6 +6,10 @@
 // адресов реализаций (vtable). Этот пример позволяет это "увидеть".
 #include <iostream>
 
+struct Z {
+
+};
+
 class Animal {
 public:
     virtual void speak() const { std::cout << "(звук)\n"; }
@@ -30,7 +34,7 @@ int main() {
     Dog dog;
 
     // Размер объекта включает скрытый vptr (обычно размер указателя).
-    std::cout << "sizeof(void*) = " << sizeof(void*) << " байт\n";
+    std::cout << "sizeof(Z) = " << sizeof(Z) << " байт\n";
     std::cout << "sizeof(Cat)   = " << sizeof(Cat)
               << " байт (содержит скрытый vptr)\n\n";
 

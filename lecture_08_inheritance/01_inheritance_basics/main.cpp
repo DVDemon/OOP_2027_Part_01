@@ -58,5 +58,8 @@ int main() {
     Animal& animal = rex;
     animal.info();
 
+    std::cout << "Size of dog:" << sizeof(rex) << " Size of animal:" << sizeof(animal) << std::endl;
+
+
     return 0;
 }

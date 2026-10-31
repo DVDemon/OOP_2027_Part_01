@@ -7,11 +7,13 @@
 //   * явный вызов перегрузки базы через Base::foo.
 
 #include <iostream>
+#include <string>
 
 class Base {
 public:
     void foo(int x) const { std::cout << "Base::foo(int): " << x << '\n'; }
     void foo(double x) const { std::cout << "Base::foo(double): " << x << '\n'; }
+    void foo(const std::string &) const { std::cout << "Base::foo(string) \n";};
 };
 
 // Без using: объявление foo(int) скрывает обе перегрузки Base.
@@ -36,12 +38,15 @@ int main() {
     const double pi = 3.14;
     h.foo(42);     // HidingDerived::foo(int)
     h.foo(pi);     // HidingDerived::foo(int) с неявным 3.14 -> 3 (ловушка!)
+    std::string str("Bla bla bla");
+    h.Base::foo(str);
     h.Base::foo(pi);  // обойти можно только явной квалификацией
 
     std::cout << "\n=== с using ===\n";
     UsingDerived u;
     u.foo(42);     // UsingDerived::foo(int)
     u.foo(3.14);   // Base::foo(double) — перегрузка снова видна
+    u.foo(str);
 
     return 0;
 }
