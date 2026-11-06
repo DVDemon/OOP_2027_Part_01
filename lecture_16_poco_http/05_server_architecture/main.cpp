@@ -54,12 +54,19 @@ public:
 };
 
 // ===== Аналог Poco::Net::HTTPRequestHandlerFactory =====
-// Factory Method (GoF): по запросу выбирает и создаёт нужный обработчик.
+// Абстрактная фабрика (Factory Method, GoF): по запросу создаёт нужный обработчик.
 // В POCO метод называется createRequestHandler и возвращает сырой указатель,
 // которым затем владеет сервер. Здесь используем unique_ptr — владение явное.
-class HandlerFactory {
+class IRequestHandlerFactory {
 public:
-    std::unique_ptr<RequestHandler> createRequestHandler(const Request& request) {
+    virtual ~IRequestHandlerFactory() = default;
+    virtual std::unique_ptr<RequestHandler> createRequestHandler(const Request& request) const = 0;
+};
+
+// Конкретная фабрика: маршрутизация по URI.
+class RouteHandlerFactory : public IRequestHandlerFactory {
+public:
+    std::unique_ptr<RequestHandler> createRequestHandler(const Request& request) const override {
         if (request.uri == "/" || request.uri == "/hello") {
             return std::make_unique<HelloHandler>();
         }
@@ -68,12 +75,12 @@ public:
 };
 
 // ===== Аналог Poco::Net::HTTPServer =====
-// Сервер зависит от АБСТРАКЦИИ фабрики (в POCO — от базового класса фабрики),
-// а не от конкретных обработчиков. Это принцип DIP: добавление нового маршрута
-// не требует менять сам сервер.
+// Сервер зависит от АБСТРАКЦИИ фабрики (IRequestHandlerFactory), а не от
+// конкретной реализации. Это принцип DIP: добавление нового маршрута (или новой
+// фабрики) не требует менять сам сервер.
 class Server {
 public:
-    explicit Server(HandlerFactory factory) : factory_(factory) {}
+    explicit Server(const IRequestHandlerFactory& factory) : factory_(factory) {}
 
     // В реальном POCO здесь был бы цикл приёма соединений и пул потоков.
     // Мы же просто обрабатываем один «принятый» запрос.
@@ -88,14 +95,15 @@ public:
     }
 
 private:
-    HandlerFactory factory_;
+    const IRequestHandlerFactory& factory_;
 };
 
 int main() {
     std::cout << "Учебная мини-модель архитектуры HTTP-сервера POCO\n";
     std::cout << "HTTPServer -> Factory -> Handler (один обработчик на запрос)\n\n";
 
-    Server server(HandlerFactory{});
+    RouteHandlerFactory factory;
+    Server server(factory);
 
     const std::vector<Request> incoming{
         {"GET", "/"},

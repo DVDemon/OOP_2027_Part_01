@@ -25,8 +25,8 @@ HTTPServer
 
 * **Наследование:** `HelloHandler`/`NotFoundHandler` наследуют `RequestHandler`.
 * **Полиморфизм:** фабрика возвращает указатель на базовый класс.
-* **Factory Method:** `HandlerFactory::createRequestHandler` выбирает тип.
-* **DIP:** `Server` зависит от абстракции фабрики, не от конкретных обработчиков.
+* **Factory Method:** `RouteHandlerFactory::createRequestHandler` выбирает тип.
+* **DIP:** `Server` зависит от абстракции `IRequestHandlerFactory`, не от конкретной фабрики.
 * **OCP:** новый маршрут = новый класс-обработчик, сервер не меняется.
 
 ## Запуск

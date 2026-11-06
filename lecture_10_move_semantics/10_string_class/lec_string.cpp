@@ -26,7 +26,11 @@ String::String(const String& other)
     : data_(new char[other.capacity_ + 1])
     , size_(other.size_)
     , capacity_(other.capacity_) {
-    std::strcpy(data_, other.data_);
+    if (other.data_ != nullptr) {
+        std::strcpy(data_, other.data_);
+    } else {
+        data_[0] = '\0';  // копирование moved-from объекта даёт пустую строку
+    }
 }
 
 // 4. Перемещающий конструктор — крадёт буфер и оставляет источник валидным.
@@ -34,8 +38,10 @@ String::String(String&& other) noexcept
     : data_(std::exchange(other.data_, nullptr))
     , size_(std::exchange(other.size_, 0))
     , capacity_(std::exchange(other.capacity_, 0)) {
-    // Источник должен остаться в валидном состоянии (пустая строка).
-    other.data_ = new char[1]{'\0'};
+    // Источник остаётся валидной ПУСТОЙ строкой (data_ == nullptr, size_ == 0).
+    // Никакой аллокации: move обязан быть дешёвым и noexcept — выделение памяти
+    // здесь нарушило бы noexcept (new может бросить) и смысл перемещения.
+    // c_str(), operator+= и operator== корректно обрабатывают nullptr.
 }
 
 // 3 и 5. Присваивание по значению (copy-and-swap).
@@ -62,12 +68,17 @@ String& String::operator+=(const String& other) {
     if (new_size > capacity_) {
         const std::size_t new_capacity = new_size * 2;
         char* new_data = new char[new_capacity + 1];
-        std::strcpy(new_data, data_);
+        new_data[0] = '\0';
+        if (data_ != nullptr) {
+            std::strcpy(new_data, data_);  // data_ может быть nullptr после move
+        }
         delete[] data_;
         data_ = new_data;
         capacity_ = new_capacity;
     }
-    std::strcat(data_, other.data_);
+    if (other.data_ != nullptr) {
+        std::strcat(data_, other.data_);  // other может быть moved-from (nullptr)
+    }
     size_ = new_size;
     return *this;
 }
@@ -80,11 +91,13 @@ String operator+(String lhs, const String& rhs) {
 }
 
 std::ostream& operator<<(std::ostream& os, const String& s) {
-    return os << s.data_;
+    return os << s.c_str();  // c_str() вернёт "" для moved-from (data_ == nullptr)
 }
 
 bool operator==(const String& a, const String& b) {
-    return a.size_ == b.size_ && std::strcmp(a.data_, b.data_) == 0;
+    if (a.size_ != b.size_) return false;
+    if (a.size_ == 0) return true;  // обе пустые (в т.ч. moved-from с nullptr)
+    return std::strcmp(a.data_, b.data_) == 0;
 }
 
 bool operator!=(const String& a, const String& b) { return !(a == b); }

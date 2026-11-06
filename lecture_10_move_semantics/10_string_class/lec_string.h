@@ -26,7 +26,9 @@ public:
     // --- Методы ---
     std::size_t size() const { return size_; }
     std::size_t capacity() const { return capacity_; }
-    const char* c_str() const { return data_; }
+    // После перемещения data_ == nullptr — c_str() обязан вернуть валидную
+    // пустую C-строку, чтобы moved-from объект оставался пригодным к печати.
+    const char* c_str() const { return data_ ? data_ : ""; }
     bool empty() const { return size_ == 0; }
 
     char& operator[](std::size_t i) { return data_[i]; }

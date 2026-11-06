@@ -27,7 +27,7 @@ void print(const T& a, const U& b) {
     std::cout << std::format("шаблон(2): {} и {}\n", a, b);
 }
 
-// 4. Специализация для vector
+// 4. Перегрузка шаблона для vector
 template <typename T>
 void print(const std::vector<T>& vec) {
     std::cout << "вектор: [";
@@ -50,7 +50,7 @@ int main() {
     // Вызов шаблона с двумя параметрами
     print(10, 20.5);
 
-    // Вызов специализации для vector
+    // Вызов перегрузки для vector
     print(std::vector{1, 2, 3, 4, 5});
 
     // Явный вызов шаблона

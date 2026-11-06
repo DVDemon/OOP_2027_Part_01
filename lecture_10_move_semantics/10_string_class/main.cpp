@@ -1,7 +1,7 @@
 // Пример 10: демонстрация учебного класса String.
 //
 // Объединяет все идеи лекции: глубокое копирование, перемещение, copy-and-swap,
-// noexcept-move, перегруженные операторы. Тесты — в tests.cpp (Google Test).
+// noexcept-move, перегруженные операторы.
 #include <iostream>
 #include <type_traits>
 #include <utility>

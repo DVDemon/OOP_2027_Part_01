@@ -7,17 +7,14 @@
 #include <algorithm>
 #include <iostream>
 #include <stdexcept>
+#include <utility>
 #include <vector>
 
 class IntStack {
     std::vector<int> data_;
 public:
-    // --- Nothrow: простые наблюдатели и swap не бросают ---
+    // --- Nothrow: простые наблюдатели не бросают ---
     std::size_t size() const noexcept { return data_.size(); }
-
-    friend void swap(IntStack& a, IntStack& b) noexcept {
-        std::swap(a.data_, b.data_);
-    }
 
     // --- Basic-гарантия: при исключении на полпути часть данных добавлена ---
     // Объект остаётся корректным, но его содержимое предсказать нельзя.

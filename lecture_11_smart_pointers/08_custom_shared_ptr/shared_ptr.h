@@ -1,7 +1,7 @@
 // Учебная реализация shared_ptr: разделяемое владение через подсчёт ссылок.
 // Внимание: учебная версия НЕ потокобезопасна (см. README).
-#ifndef LECTURE13_CUSTOM_SHARED_PTR_H
-#define LECTURE13_CUSTOM_SHARED_PTR_H
+#ifndef LECTURE11_CUSTOM_SHARED_PTR_H
+#define LECTURE11_CUSTOM_SHARED_PTR_H
 
 #include <cstddef>  // std::size_t
 
@@ -62,9 +62,13 @@ public:
 
     // Отпустить текущий ресурс и (опционально) захватить новый.
     void reset(T* p = nullptr) {
+        if (p == ptr_) return;  // self-reset (reset(get())) — безопасный no-op
+        // Аллокация ДО release(): если new бросит, *this не тронут.
+        // (В продакшене при исключении нужно ещё удалить p — как std::shared_ptr.)
+        std::size_t* new_count = p ? new std::size_t(1) : nullptr;
         release();
         ptr_ = p;
-        ref_count_ = p ? new std::size_t(1) : nullptr;
+        ref_count_ = new_count;
     }
 
 private:
@@ -87,4 +91,4 @@ private:
 
 }  // namespace edu
 
-#endif  // LECTURE13_CUSTOM_SHARED_PTR_H
+#endif  // LECTURE11_CUSTOM_SHARED_PTR_H

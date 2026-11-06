@@ -1,6 +1,6 @@
 // Учебная реализация unique_ptr: эксклюзивное владение ресурсом.
-#ifndef LECTURE13_CUSTOM_UNIQUE_PTR_H
-#define LECTURE13_CUSTOM_UNIQUE_PTR_H
+#ifndef LECTURE11_CUSTOM_UNIQUE_PTR_H
+#define LECTURE11_CUSTOM_UNIQUE_PTR_H
 
 #include <utility>  // std::swap, std::forward
 
@@ -70,4 +70,4 @@ UniquePtr<T> makeUnique(Args&&... args) {
 
 }  // namespace edu
 
-#endif  // LECTURE13_CUSTOM_UNIQUE_PTR_H
+#endif  // LECTURE11_CUSTOM_UNIQUE_PTR_H
