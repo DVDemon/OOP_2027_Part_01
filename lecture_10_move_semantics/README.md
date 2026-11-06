@@ -25,6 +25,7 @@ cmake --build build
 ./build/08_rule_of_five_zero
 ./build/09_noexcept_move
 ./build/10_string_class_demo
+./build/11_initializer_list
 ```
 
 ## Примеры
@@ -41,6 +42,7 @@ cmake --build build
 | [`08_rule_of_five_zero`](08_rule_of_five_zero) | 8 | Правило пяти vs Правило нуля |
 | [`09_noexcept_move`](09_noexcept_move) | 9 | `noexcept` для move: `vector` копирует вместо перемещения без него |
 | [`10_string_class`](10_string_class) | 10 | Полная реализация класса `String` |
+| [`11_initializer_list`](11_initializer_list) | 11 | Конструктор из `std::initializer_list` |
 
 ## Ключевые идеи лекции
 
@@ -65,3 +67,5 @@ cmake --build build
 9. **`noexcept` на move** критичен: без него `std::vector` при реаллокации
    копирует элементы вместо перемещения.
 10. **`String`** — учебный пример, объединяющий все идеи лекции.
+11. **`std::initializer_list`** — удобное создание контейнера из `{ ... }`;
+    не отменяет правило пяти, а лишь дополняет способы инициализации.

@@ -41,3 +41,5 @@ add_lecture_example(10_string_class_demo
     10_string_class/main.cpp
     10_string_class/lec_string.cpp)
 target_include_directories(10_string_class_demo PRIVATE 10_string_class)
+
+add_lecture_example(11_initializer_list 11_initializer_list/main.cpp)

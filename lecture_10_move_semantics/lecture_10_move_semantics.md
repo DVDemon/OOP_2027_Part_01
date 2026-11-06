@@ -12,6 +12,7 @@
 8. Правило пяти (Rule of Five) и Правило нуля (Rule of Zero)
 9. `noexcept` для move-операций
 10. Полная реализация класса String
+11. Конструктор из `std::initializer_list`
 
 ---
 
@@ -498,6 +499,40 @@ public:
 
 ---
 
+## 11. Конструктор из `std::initializer_list`
+
+`std::initializer_list<T>` — лёгкий «вид» на временный массив, который
+компилятор строит из списка в фигурных скобках `{ ... }`. Даёт только
+`begin()`/`end()`/`size()`, элементы доступны **только на чтение**:
+
+```cpp
+class DynArray {
+    int* data_;
+    size_t size_;
+public:
+    // Конструктор из std::initializer_list
+    DynArray(std::initializer_list<int> il)
+        : data_(new int[il.size()]), size_(il.size()) {
+        std::copy(il.begin(), il.end(), data_);
+    }
+    // Конструктор «n элементов»
+    explicit DynArray(size_t n) : data_(new int[n]{}), size_(n) {}
+    // ... правило пяти остаётся в силе ...
+};
+
+DynArray a{10, 20, 30};  // initializer_list -> {10, 20, 30}
+DynArray b(5);           // пять нулевых элементов
+```
+
+> **Подвох:** `DynArray{5}` — конструктор из `initializer_list` (один элемент
+> `5`), а `DynArray(5)` — конструктор из `size_t` (пять элементов). Фигурные
+> скобки «предпочитают» initializer_list.
+
+Пример:
+- [11_initializer_list](11_initializer_list)
+
+---
+
 ## Ключевые концепции
 
 | Концепция | Суть |
@@ -512,6 +547,7 @@ public:
 | Rule of Five | Rule of Three + Move ctor + Move assign |
 | Rule of Zero | Не определять ничего — делегировать RAII-членам |
 | `noexcept` | Без него `vector` будет копировать вместо перемещения |
+| `std::initializer_list` | Создание контейнера из `{ ... }` — читаемо и идиоматично |
 
 ---
 
