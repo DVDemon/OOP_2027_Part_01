@@ -1,6 +1,6 @@
 # 05. `enable_shared_from_this`
 
-**Пункт плана:** 5.
+**Пункт плана:** 6.
 
 ## Что показывает пример
 
@@ -11,7 +11,7 @@
 ## Запуск
 
 ```bash
-./build/05_enable_shared_from_this
+./build/06_enable_shared_from_this
 ```
 
 ## Плохо → Хорошо

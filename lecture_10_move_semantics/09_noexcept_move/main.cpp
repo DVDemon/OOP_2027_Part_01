@@ -23,7 +23,7 @@ class Bad {
 public:
     Bad() = default;
     Bad(const Bad&) { std::cout << "  Bad: копирование\n"; }
-    Bad(Bad&&) { std::cout << "  Bad: перемещение\n"; }  // нет noexcept!
+    Bad(Bad&&) noexcept{ std::cout << "  Bad: перемещение\n"; }  // нет noexcept!
     Bad& operator=(const Bad&) = default;
     Bad& operator=(Bad&&) = default;
 };
@@ -47,6 +47,9 @@ int main() {
     {
         std::vector<Bad> v;
         v.reserve(1);
+        v.emplace_back();
+        v.emplace_back();
+        v.emplace_back();
         v.emplace_back();
         v.emplace_back();  // реаллокация: копирование вместо перемещения!
     }

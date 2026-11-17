@@ -1,4 +1,4 @@
-// Пример 09: умные указатели и полиморфизм.
+// Пример 10: умные указатели и полиморфизм.
 #include <iostream>
 #include <memory>
 #include <stdexcept>

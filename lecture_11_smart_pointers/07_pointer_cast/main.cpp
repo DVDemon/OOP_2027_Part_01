@@ -1,4 +1,4 @@
-// Пример 06: dynamic_pointer_cast / static_pointer_cast для shared_ptr.
+// Пример 07: dynamic_pointer_cast / static_pointer_cast для shared_ptr.
 #include <iostream>
 #include <memory>
 

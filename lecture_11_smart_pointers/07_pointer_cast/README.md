@@ -1,6 +1,6 @@
 # 06. `dynamic_pointer_cast` / `static_pointer_cast`
 
-**Пункт плана:** 6.
+**Пункт плана:** 7.
 
 ## Что показывает пример
 
@@ -13,7 +13,7 @@
 ## Запуск
 
 ```bash
-./build/06_pointer_cast
+./build/07_pointer_cast
 ```
 
 ## Сравнение

@@ -1,4 +1,4 @@
-// Пример 08: использование учебной реализации SharedPtr.
+// Пример 09: использование учебной реализации SharedPtr.
 #include <iostream>
 
 #include "shared_ptr.h"

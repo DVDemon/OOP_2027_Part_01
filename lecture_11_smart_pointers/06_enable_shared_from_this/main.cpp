@@ -1,4 +1,4 @@
-// Пример 05: enable_shared_from_this — безопасный shared_ptr на самого себя.
+// Пример 06: enable_shared_from_this — безопасный shared_ptr на самого себя.
 #include <functional>
 #include <iostream>
 #include <memory>

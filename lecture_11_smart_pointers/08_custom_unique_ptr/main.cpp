@@ -1,4 +1,4 @@
-// Пример 07: использование учебной реализации UniquePtr.
+// Пример 08: использование учебной реализации UniquePtr.
 #include <iostream>
 #include <string>
 #include <utility>
