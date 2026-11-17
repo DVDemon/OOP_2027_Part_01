@@ -1,4 +1,4 @@
-# 06. `dynamic_pointer_cast` / `static_pointer_cast`
+# 07. `dynamic_pointer_cast` / `static_pointer_cast`
 
 **Пункт плана:** 7.
 

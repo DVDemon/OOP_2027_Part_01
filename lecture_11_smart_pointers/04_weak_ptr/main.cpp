@@ -2,23 +2,6 @@
 #include <iostream>
 #include <memory>
 
-// ПЛОХО: оба указателя shared — образуется цикл, деструкторы НЕ вызываются.
-namespace bad {
-struct Node {
-    std::shared_ptr<Node> next;
-    std::shared_ptr<Node> prev;  // цикл!
-    ~Node() { std::cout << "  ~bad::Node\n"; }
-};
-
-void leak() {
-    auto a = std::make_shared<Node>();
-    auto b = std::make_shared<Node>();
-    a->next = b;
-    b->prev = a;  // a -> b -> a: у обоих use_count == 2, при выходе станет 1
-    std::cout << "  bad: use_count(a) = " << a.use_count() << '\n';
-    // При выходе деструкторы НЕ вызовутся — утечка.
-}
-}  // namespace bad
 
 // ХОРОШО: обратная связь — weak_ptr, цикл разорван.
 namespace good {
@@ -38,9 +21,7 @@ void noLeak() {
 }  // namespace good
 
 int main() {
-    std::cout << "--- bad::leak (цикл из shared_ptr) ---\n";
-    bad::leak();
-    std::cout << "  (деструкторы выше НЕ напечатались — память утекла)\n";
+    
 
     std::cout << "--- good::noLeak (обратная связь через weak_ptr) ---\n";
     good::noLeak();

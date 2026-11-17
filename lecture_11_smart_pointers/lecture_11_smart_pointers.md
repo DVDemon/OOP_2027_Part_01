@@ -286,17 +286,30 @@ class Document {
 
 ## 6. `enable_shared_from_this`
 
-Позволяет объекту безопасно получить `shared_ptr` на самого себя:
+Позволяет объекту безопасно получить `shared_ptr` на самого себя — например,
+чтобы отложенная задача держала владельца живым до своего выполнения:
 
 ```cpp
-class Server : public std::enable_shared_from_this<Server> {
+class Task {                                  // задача — объект, а не замыкание
 public:
-    void startAsync() {
-        // Нужно передать shared_ptr на себя в callback
-        auto self = shared_from_this();
-        asyncOperation([self]() {
-            self->onComplete();
-        });
+    virtual ~Task() = default;
+    virtual void run() = 0;
+};
+
+class Server : public std::enable_shared_from_this<Server> {
+    class CompleteTask : public Task {
+    public:
+        explicit CompleteTask(std::shared_ptr<Server> server)
+            : server_(std::move(server)) {}
+        void run() override { server_->onComplete(); }
+    private:
+        std::shared_ptr<Server> server_;      // продлевает жизнь сервера
+    };
+
+public:
+    void startAsync(TaskQueue& queue) {
+        // shared_from_this() даёт shared_ptr с тем же control block
+        queue.push(std::make_unique<CompleteTask>(shared_from_this()));
     }
 
     void onComplete() {
@@ -305,13 +318,21 @@ public:
 };
 
 int main() {
-    auto server = std::make_shared<Server>();
-    server->startAsync();
-    // server -- ОБЯЗАТЕЛЬНО shared_ptr, иначе shared_from_this() бросит исключение
+    TaskQueue queue;
+    auto server = std::make_shared<Server>();   // ОБЯЗАТЕЛЬНО shared_ptr
+    server->startAsync(queue);
+    // сервер живёт, пока задача в очереди держит его shared_ptr
 }
 ```
 
-**Ограничение:** нельзя вызывать `shared_from_this()` из конструктора -- `shared_ptr` ещё не создан.
+Копия `shared_ptr` внутри задачи держит владельца: `use_count` становится 2
+(локальная ссылка + задача), и объект разрушается только после выполнения
+задачи и очистки очереди.
+
+**Ограничения:**
+
+- нельзя вызывать `shared_from_this()` из конструктора -- `shared_ptr` ещё не создан;
+- объектом обязан владеть `shared_ptr`, иначе бросается `std::bad_weak_ptr`.
 
 > Пример: [06_enable_shared_from_this](06_enable_shared_from_this)
 
