@@ -16,6 +16,7 @@ int main() {
     std::cout << "raw value = " << *raw << '\n';
 
     p2.reset(new int(100));       // освободить старый ресурс, владеть новым
+
     std::cout << "*p2 после reset = " << *p2 << '\n';
 
     p2.reset();                   // освободить ресурс, p2 == nullptr

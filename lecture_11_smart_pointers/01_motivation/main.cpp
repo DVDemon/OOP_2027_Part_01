@@ -33,9 +33,10 @@ void dangerous() {
 // Деструкторы unique_ptr освободят память при любом выходе из функции,
 // в том числе при исключении.
 void safe() {
-    auto a = std::make_unique<int>(10);
-    auto s = std::make_unique<std::string>("hello");
+
     try {
+        std::unique_ptr<int> a = std::make_unique<int>(10);
+        auto s = std::make_unique<std::string>("hello");
         process(a.get(), s.get());  // get() — не передаёт владения
     } catch (const std::exception& e) {
         std::cout << "safe поймал: " << e.what()

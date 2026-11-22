@@ -17,6 +17,7 @@ void noLeak() {
     a->next = b;
     b->prev = a;  // weak_ptr не участвует в подсчёте
     std::cout << "  good: use_count(a) = " << a.use_count() << '\n';
+    
 }  // деструкторы вызовутся корректно
 }  // namespace good
 
@@ -27,19 +28,19 @@ int main() {
     good::noLeak();
 
     // --- Использование weak_ptr ---
-    std::cout << "--- работа с weak_ptr ---\n";
-    auto shared = std::make_shared<int>(42);
-    std::weak_ptr<int> weak = shared;
-    std::cout << "expired? " << weak.expired() << '\n';  // 0 (false)
+    // std::cout << "--- работа с weak_ptr ---\n";
+    // auto shared = std::make_shared<int>(42);
+    // std::weak_ptr<int> weak = shared;
+    // std::cout << "expired? " << weak.expired() << '\n';  // 0 (false)
 
-    if (auto locked = weak.lock()) {                     // lock даёт shared_ptr
-        std::cout << "значение через lock = " << *locked << '\n';
-    }
+    // if (auto locked = weak.lock()) {                     // lock даёт shared_ptr
+    //     std::cout << "значение через lock = " << *locked << '\n';
+    // }
 
-    shared.reset();                                      // удаляем объект
-    std::cout << "после reset expired? " << weak.expired() << '\n';  // 1 (true)
-    std::cout << "lock после удаления пуст? "
-              << (weak.lock() ? "нет" : "да") << '\n';
+    // shared.reset();                                      // удаляем объект
+    // std::cout << "после reset expired? " << weak.expired() << '\n';  // 1 (true)
+    // std::cout << "lock после удаления пуст? "
+    //           << (weak.lock() ? "нет" : "да") << '\n';
 
     return 0;
 }
