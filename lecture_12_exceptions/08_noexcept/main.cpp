@@ -7,16 +7,19 @@
 #include <utility>
 #include <vector>
 
-// Спецификатор: обещаем не бросать исключений.
-int add(int a, int b) noexcept {
-    return a + b;
-}
-
 // noexcept(false) — функция может бросать (это поведение по умолчанию).
 int may_throw(int x) noexcept(false) {
     if (x < 0) throw std::runtime_error("отрицательное");
     return x;
 }
+
+// Спецификатор: обещаем не бросать исключений.
+int add(int a, int b) noexcept {
+    may_throw(-a);
+    return a + b;
+}
+
+
 
 struct A {
     void foo() noexcept {}
@@ -33,7 +36,11 @@ struct SafeWorker   { void work() noexcept {} };
 struct UnsafeWorker { void work() {} };
 
 int main() {
+    try{
     std::cout << "add(2, 3) = " << add(2, 3) << '\n';
+    }catch(...){
+        std::cout << "Все равно люблю C++!!" << std::endl;
+    }
     std::cout << "may_throw(5) = " << may_throw(5) << '\n';
 
     // Оператор noexcept: спрашиваем у компилятора, бросает ли выражение.

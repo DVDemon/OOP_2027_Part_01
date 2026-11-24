@@ -14,6 +14,9 @@ public:
         : std::runtime_error(msg), error_code_(code) {}
 
     int code() const noexcept { return error_code_; }
+    ~DatabaseError() {
+        std::cout << "Connection closed \n";
+    }
 };
 
 // Более конкретная ошибка — наследник DatabaseError.
@@ -35,13 +38,13 @@ int main() {
     }
 
     // Стандартные исключения тоже ловятся по общему std::exception.
-    try {
-        std::string s = "ab";
-        s.at(10);  // бросит std::out_of_range (наследник std::logic_error)
-    }
-    catch (const std::exception& e) {
-        std::cout << "std::exception: " << e.what() << '\n';
-    }
+    // try {
+    //     std::string s = "ab";
+    //     s.at(10);  // бросит std::out_of_range (наследник std::logic_error)
+    // }
+    // catch (const std::exception& e) {
+    //     std::cout << "std::exception: " << e.what() << '\n';
+    // }
 
     return 0;
 }
