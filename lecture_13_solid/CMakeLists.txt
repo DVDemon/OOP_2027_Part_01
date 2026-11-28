@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(lecture_13_stl LANGUAGES CXX)
+project(lecture_13_solid LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -26,8 +26,14 @@ function(add_lecture_example name)
 endfunction()
 
 # --- Примеры (по одному исполняемому файлу на поддиректорию) ---
-add_lecture_example(01_vector          01_vector/main.cpp)
-add_lecture_example(02_map             02_map/main.cpp)
-add_lecture_example(03_iterators       03_iterators/main.cpp)
-add_lecture_example(04_algorithms      04_algorithms/main.cpp)
-add_lecture_example(05_word_frequency  05_word_frequency/main.cpp)
+add_lecture_example(01_coupling_cohesion 01_coupling_cohesion/main.cpp)
+add_lecture_example(02_pimpl              02_pimpl/main.cpp
+                                          02_pimpl/widget.cpp)
+add_lecture_example(03_tell_dont_ask      03_tell_dont_ask/main.cpp)
+add_lecture_example(04_cqrs               04_cqrs/main.cpp)
+add_lecture_example(05_srp                05_srp/main.cpp)
+add_lecture_example(06_ocp                06_ocp/main.cpp)
+add_lecture_example(07_lsp                07_lsp/main.cpp)
+add_lecture_example(08_isp                08_isp/main.cpp)
+add_lecture_example(09_dip                09_dip/main.cpp)
+add_lecture_example(10_summary            10_summary/main.cpp)

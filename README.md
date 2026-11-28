@@ -51,8 +51,7 @@ cd build && ctest --output-on-failure
 ## Сборка всех лекций сразу
 
 В корне `examples/` есть агрегирующий `CMakeLists.txt`, который добавляет все
-16 лекций через `add_subdirectory`. Имена целей во всём дереве уникальны
-(например, `10_best_practices` в лекциях 9 и 13 различаются), поэтому конфликтов
+16 лекций через `add_subdirectory`. Имена целей во всём дереве уникальны, поэтому конфликтов
 не возникает:
 
 ```bash
@@ -105,7 +104,7 @@ cmake -S . -B build -DLECTURE_BUILD_TESTS=ON
 | 10 | Copy/Move семантика. Правило пяти | `lecture_10_move_semantics` |
 | 11 | Умные указатели | `lecture_11_smart_pointers` |
 | 12 | Обработка исключений. Гарантии безопасности | `lecture_12_exceptions` |
-| 13 | STL: контейнеры, итераторы, алгоритмы | `lecture_13_stl` |
-| 14 | Принципы SOLID | `lecture_14_solid` |
+| 13 | Принципы SOLID | `lecture_13_solid` |
+| 14 | STL: память, контейнеры, лямбды и алгоритмы | `lecture_14_stl` |
 | 15 | Основы шаблонов: функции и классы | `lecture_15_templates` |
 | 16 | POCO: HTTP-сервер, архитектура фреймворка | `lecture_16_poco_http` |

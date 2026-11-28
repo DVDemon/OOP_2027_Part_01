@@ -27,8 +27,8 @@ set(LECTURES
     lecture_10_move_semantics
     lecture_11_smart_pointers
     lecture_12_exceptions
-    lecture_13_stl
-    lecture_14_solid
+    lecture_13_solid
+    lecture_14_stl
     lecture_15_templates
     lecture_16_poco_http
 )
